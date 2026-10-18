@@ -35,7 +35,11 @@ h2.sec { font-size:30px; font-weight:800; letter-spacing:-.03em; }
 .exp p { font-size:16px; color:var(--sub); margin-top:6px; }
 
 /* SkillSet */
-.skills { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px 24px; }
+.skillgroups { display:flex; flex-direction:column; }
+.sg { display:grid; grid-template-columns:120px 1fr; align-items:center; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); }
+.sg:last-child { border-bottom:0; }
+.sg .k { font-size:14px; font-weight:700; color:var(--mute); }
+.skills { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px 20px; }
 .skills li { display:flex; align-items:center; gap:12px; font-size:17px; font-weight:600; }
 .skills li::before { content:''; width:34px; height:34px; border-radius:10px; background:var(--blue-l) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233182F6' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m8 7-5 5 5 5M16 7l5 5-5 5'/%3E%3C/svg%3E") center/18px no-repeat; flex:none; }
 .skills.tools li::before { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233182F6' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2 4 14h7l-1 8 9-12h-7z'/%3E%3C/svg%3E"); }
@@ -100,6 +104,7 @@ details[open] summary::after { content:'\2212'; }
   section { padding:48px 0; }
   .hello { font-size:24px; } .quote { font-size:21px; }
   .skills { grid-template-columns:1fr 1fr; }
+  .sg { grid-template-columns:1fr; gap:8px; }
   .cards, .why { grid-template-columns:1fr; }
   .kpis { grid-template-columns:1fr 1fr; }
   .rows li { grid-template-columns:1fr; gap:0; }
