@@ -7,7 +7,7 @@ ul { list-style:none; }
 
 /* 왼쪽 메뉴 */
 .side { position:fixed; inset:0 auto 0 0; width:260px; background:var(--gray); padding:56px 32px; display:flex; flex-direction:column; align-items:center; text-align:center; }
-.side .avatar { width:84px; aspect-ratio:413/531; border-radius:12px; object-fit:cover; display:block; opacity:.96; }
+.side .avatar { width:110px; height:auto; border-radius:12px; display:block; }
 .side h1 { font-size:24px; font-weight:800; margin-top:18px; }
 .side .role { font-size:15px; color:var(--sub); }
 .side nav { margin-top:36px; width:100%; display:flex; flex-direction:column; gap:2px; }
