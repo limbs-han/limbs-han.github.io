@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>namu-reco | 사지한 포트폴리오</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<aside class="side">
+  <img class="avatar" src="../assets/img/profile.jpg" alt="사지한 프로필 사진">
+  <h1>사지한</h1>
+  <div class="role">신입 데이터 엔지니어</div>
+  <nav>
+    <a href="../index.html#intro">Introduction</a>
+    <a href="../index.html#skill">SkillSet</a>
+    <a href="../index.html#portfolio" class="on">Portfolio</a>
+    <a href="../index.html#awards">Awards</a>
+    <a href="../index.html#cert">Certification</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+</aside>
+<main class="detail">
+<a class="back" href="../index.html#portfolio">&larr; Portfolio</a>
+
+<div class="lb">03 namu-reco</div>
+<h2>읽은 문서로 다음 문서를 추천하는 크롬 확장</h2>
+<div class="meta">개인 프로젝트 &nbsp;|&nbsp; 2026.08, 2주 &nbsp;|&nbsp; 1인, 크롬 웹스토어 게시. 구현은 AI 코딩 도구, 데이터와 기준은 직접</div>
+<img class="shot" src="../assets/img/namu_store.png" alt="나무위키 상단에 추천 문서 메뉴가 펼쳐진 화면">
+<div class="note">크롬 웹스토어 등록 화면</div>
+<div class="chips"><span>PySpark</span><span>Python</span><span>GitHub Pages</span><span>IndexedDB</span><span>Chrome Extension</span></div>
+<div class="kpis">
+  <div><div class="num"><b>8.8</b>GB</div><p>나무위키 덤프를 노트북 한 대로</p></div>
+  <div><div class="num"><b>95.6</b>%</div><p>링크 해석률, 기준 90%</p></div>
+  <div><div class="num"><b>154</b>MB</div><p>배포 파일 합계, 기준 500MB</p></div>
+</div>
+<div class="block"><h3>판단</h3>
+<details open><summary>서버 없이 만든 이유<span class="r">운영 비용 0</span></summary><div class="why"><div><h5>왜 서버 없이</h5><p>서버를 두면 읽은 기록이라는 <b>개인정보와 서버 비용</b>을 혼자 계속 떠안아야 했습니다.</p></div><div><h5>그래서 이렇게</h5><p>추천은 미리 계산해 정적 파일로 배포하고, 읽은 기록은 <b>사용자 브라우저에만</b> 둡니다.</p></div></div></details><details><summary>게시 전에 기준부터 숫자로 정한 이유<span class="r">첫 제출 통과</span></summary><div class="why"><div><h5>왜 기준부터</h5><p>기준을 먼저 정해야 <b>무엇을 고쳤는지 말할 수 있어서</b>입니다. 링크 해석률, 배포 용량, 분류 오염 세 가지를 정했습니다.</p></div><div><h5>막혔을 때</h5><p>본문 없는 페이지라 크롤링 대신 공식 덤프, 메모리 초과에는 분할 크기를 절반으로, CPU로 30일 걸릴 비교는 <b>GPU로 6분</b>.</p></div></div></details>
+</div>
+<div class="go">
+  <a href="https://github.com/limbs-han/namu-reco" target="_blank" rel="noopener">GitHub 저장소</a>
+  <a href="https://chromewebstore.google.com/detail/ndmfdfbdinhapjajelhfohchljncilme" target="_blank" rel="noopener">크롬 웹스토어</a>
+</div>
+
+</main>
+<footer>&copy; 사지한</footer>
+</body>
+</html>
