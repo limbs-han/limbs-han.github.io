@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>체리컨슘 | 사지한 포트폴리오</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=5">
+<link rel="stylesheet" href="../assets/style.css?v=6">
 </head>
 <body>
 <aside class="side">
@@ -25,7 +25,8 @@
 
 <div class="lb">02 체리컨슘</div>
 <h2>내 카드로 어디서 결제할지 알려 주는 혜택 관리 앱</h2>
-<div class="meta">개인 프로젝트 &nbsp;|&nbsp; 2026.09 ~ &nbsp;|&nbsp; 1인, 기획부터 Databricks 파이프라인까지. 구현 초안은 AI 코딩 도구</div>
+<div class="meta">개인 프로젝트 &nbsp;|&nbsp; 2026.09 ~ &nbsp;|&nbsp; 1인, 기획부터 Databricks 파이프라인까지</div>
+<div class="go top"><a href="https://github.com/limbs-han/CherryConsume" target="_blank" rel="noopener">GitHub 저장소</a></div>
 <img class="phones" src="../assets/img/cherry_thumb.png" alt="체리컨슘 앱 화면 3장">
 <div class="chips"><span>Databricks</span><span>PySpark</span><span>Delta Lake</span><span>Auto Loader</span><span>GitHub Actions</span><span>Flutter</span></div>
 <div class="kpis">
@@ -43,7 +44,6 @@
 <div class="block"><h3>판단</h3>
 <details open><summary>LLM이 뽑은 혜택을 그대로 쓰지 않은 이유<span class="r">일치율 44.7%</span></summary><div class="why"><div><h5>왜 어려웠나</h5><p>카드 혜택은 약관 문장 속에 있습니다. 모델 3종을 비교해 보니 가장 나은 것도 <b>항목 일치율이 44.7%</b>였습니다.</p></div><div><h5>왜 이렇게 만들었나</h5><p>돈 계산에 들어가는 값이라 <b>사람이 승인한 것만</b> Gold에 넣었습니다. MERGE로 반영해 다시 돌려도 중복이 쌓이지 않습니다.</p></div></div></details><details><summary>계산이 맞는지 실제 명세서로 확인한 이유<span class="r">170 / 187건</span></summary><div class="why"><div><h5>왜 따로 검증했나</h5><p>혼자 AI로 만든 돈 계산 코드라 <b>같이 검토해 줄 사람이 없었습니다.</b> 코드를 짠 쪽이 정답까지 만들면 같은 실수가 정답에도 들어갑니다.</p></div><div><h5>왜 명세서였나</h5><p>정답은 계산 코드를 안 본 다른 에이전트가 냈습니다. 그래도 규칙을 똑같이 잘못 읽을 수 있어서 <b>카드사가 실제 청구한 금액</b>을 마지막 정답으로 삼았습니다. 나머지 17건도 원인을 모두 찾았습니다.</p></div></div></details>
 </div>
-<div class="go"><a href="https://github.com/limbs-han/CherryConsume" target="_blank" rel="noopener">GitHub 저장소</a></div>
 
 </main>
 <footer>&copy; 사지한</footer>

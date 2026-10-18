@@ -95,6 +95,7 @@ details[open] summary::after { content:'\2212'; }
 .mono { font-family:Consolas, 'D2Coding', monospace; font-size:.92em; letter-spacing:0; }
 .go { display:flex; gap:10px; margin-top:36px; flex-wrap:wrap; }
 .go a { font-size:15px; font-weight:700; color:var(--blue); background:var(--blue-l); border-radius:10px; padding:10px 16px; }
+.go.top { margin-top:16px; }
 .phones { display:block; width:100%; border-radius:18px; margin-top:28px; }
 
 @media (max-width:900px) {
