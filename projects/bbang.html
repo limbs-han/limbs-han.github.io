@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>빵긋 | 사지한 포트폴리오</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=5">
+</head>
+<body>
+<aside class="side">
+  <img class="avatar" src="../assets/img/photo.jpg" alt="사지한 프로필 사진">
+  <h1>사지한</h1>
+  <nav>
+    <a href="../index.html#intro">Introduction</a>
+    <a href="../index.html#skill">SkillSet</a>
+    <a href="../index.html#portfolio" class="on">Portfolio</a>
+    <a href="../index.html#awards">Awards</a>
+    <a href="../index.html#cert">Certification</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+</aside>
+<main class="detail">
+<a class="back" href="../index.html#portfolio">&larr; Portfolio</a>
+
+<div class="lb">04 빵긋</div>
+<h2>웃음이 터진 순간만 남기는 AI 홈캠</h2>
+<div class="meta">SSAFY 공통 프로젝트 &nbsp;|&nbsp; 2026.07 ~ 08, 4주 &nbsp;|&nbsp; 6명, 아이디어 제안, PM과 AI 파트</div>
+<img class="shot" src="../assets/img/bbang_thumb.jpg" alt="빵긋 앱의 오늘의 추억 화면">
+<div class="note">실제 앱 화면. 팀 영상 포트폴리오에서 캡처</div>
+<div class="chips"><span>Jetson</span><span>MQTT</span><span>Whisper</span><span>LLM</span><span>ML Kit</span><span>Jira</span><span>Notion</span></div>
+<div class="kpis">
+  <div><div class="num"><b>우수상</b></div><p>SSAFY 공통 프로젝트, 삼성전자</p></div>
+  <div><div class="num"><b>4</b>주</div><p>기획부터 시연까지</p></div>
+  <div><div class="num"><b>17</b>회</div><p>문서로 남긴 데일리 스크럼</p></div>
+</div>
+<div class="block"><h3>제가 맡은 일</h3><ul>
+  <li>서비스 기획서를 다시 써 MVP 7단계를 기기, 서버, 앱 역할로 나누고 단계마다 요구사항과 API 번호를 연결</li>
+  <li>Jira를 에픽, 스토리, 작업 3단으로 나눠 분담하고 데일리 스크럼 진행</li>
+  <li>AI 파트에서 Whisper 자동 자막과 LLM 4컷 만화 기능 담당</li>
+  <li>ERD 초안 작성. 백엔드 담당이 개발하며 22개 테이블로 확장</li>
+</ul></div>
+<div class="block"><h3>판단</h3>
+<details open><summary>기획서를 다시 쓴 이유<span class="r">문서 하나로 연결</span></summary><div class="why"><div><h5>왜 다시 썼나</h5><p>기획 주에 AI로 빠르게 만든 기획서가 있었지만 <b>팀 전체가 그 기획을 이해하지 못했습니다.</b> 같은 문서를 보고 각자 다른 그림을 그리고 있었습니다.</p></div><div><h5>어떻게 썼나</h5><p>MVP 7단계를 젯슨, 서버, 폰의 역할로 쪼개고 단계마다 <b>요구사항과 API 번호</b>를 붙였습니다. 이후 각자 파트가 그 문서 기준으로 연결됐습니다.</p></div></div></details><details><summary>매 순간을 저장하지 않은 이유<span class="r">웃음 순간만 업로드</span></summary><div class="why"><div><h5>왜 문제였나</h5><p>홈캠 영상을 매 순간 서버에 올리면 <b>용량과 사생활</b> 문제가 함께 커집니다.</p></div><div><h5>그래서 제안한 것</h5><p>블랙박스처럼 24시간 순환 녹화는 기기 안에서만 돌리고, <b>웃음이 감지된 순간의 클립만</b> 서버로 올리자고 제안했습니다. 이 구조가 서비스 정의 첫 문단에 들어갔습니다.</p></div></div></details><details><summary>범위를 좁힌 이유<span class="r">4주 안에 완성</span></summary><div class="why"><div><h5>왜 좁혔나</h5><p>인물 탐지와 팬틸트 자동 추적까지 넣으면 <b>4주 안에 끝낼 수 없었습니다.</b></p></div><div><h5>무엇을 뺐나</h5><p>둘을 범위 밖으로 두고 이벤트 판단을 <b>웃음소리 감지 하나</b>로 단순화했습니다. 무엇을 하지 않을지도 기획서에 적었습니다.</p></div></div></details>
+</div>
+<img class="shot" src="../assets/img/bbang_app.png" alt="빵긋 앱 화면" style="max-width:320px">
+<div class="go"><a href="https://github.com/limbs-han/Bbanggeut" target="_blank" rel="noopener">GitHub 저장소</a></div>
+
+</main>
+<footer>&copy; 사지한</footer>
+</body>
+</html>
