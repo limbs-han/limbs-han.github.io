@@ -1,15 +1,18 @@
 /* 기존 사이트의 색상, 글꼴과 왼쪽 메뉴를 그대로 사용한다. */
-.lanf .side { overflow-y:auto; }
-.lanf .side nav { margin-top:26px; }
-.lanf .side nav a { padding:8px 10px; }
-.lanf section { scroll-margin-top:24px; }
-.lanf main { word-break:keep-all; overflow-wrap:break-word; }
-.lanf .intro-copy { margin-top:20px; max-width:44em; }
-.lanf .application { margin-top:26px; font-size:14px; color:var(--mute); }
+.landf .side { overflow-y:auto; }
+.landf .side nav { margin-top:26px; }
+.landf .side nav a { padding:8px 10px; }
+.landf section { scroll-margin-top:24px; }
+.landf main > section { border-bottom:0; }
+.landf main > section + section { border-top:1px solid var(--line); margin-top:48px; padding-top:80px; }
+.landf .project-head .lb { font-size:24px; font-weight:800; margin-bottom:16px; }
+.landf main { word-break:keep-all; overflow-wrap:break-word; }
+.landf .intro-copy { margin-top:20px; max-width:44em; }
+.landf .application { margin-top:26px; font-size:14px; color:var(--mute); }
 .skip { position:fixed; top:12px; left:12px; z-index:10; padding:10px 18px; background:#fff; color:var(--blue); border:2px solid var(--blue); border-radius:8px; transform:translateY(-160%); }
 .skip:focus { transform:none; }
-.lanf :focus-visible { outline:3px solid var(--blue); outline-offset:4px; }
-.lanf .lb { margin-top:0; margin-bottom:12px; }
+.landf :focus-visible { outline:3px solid var(--blue); outline-offset:4px; }
+.landf .lb { margin-top:0; margin-bottom:12px; }
 .project h2 { line-height:1.45; text-wrap:balance; }
 .project-lead { margin-top:24px; font-size:17px; color:var(--sub); }
 .project strong { color:var(--ink); font-weight:700; }
@@ -20,6 +23,11 @@
 .source-links a:hover { text-decoration:underline; text-underline-offset:4px; }
 .project-figure { margin-top:32px; }
 .project-figure img, .extra img { display:block; width:100%; height:auto; border-radius:12px; background:var(--gray); }
+.phone-shots { display:flex; justify-content:center; gap:24px; padding:24px; background:var(--gray); border-radius:12px; }
+.phone-shots img { width:auto; max-width:calc(50% - 12px); height:auto; max-height:540px; object-fit:contain; }
+.project-figure.single-phone img { max-width:280px; max-height:560px; width:auto; margin:0 auto; }
+.responsibilities td, .responsibilities th { font-size:14px; }
+.responsibilities th[scope="row"] { white-space:nowrap; background:transparent; }
 figcaption { margin-top:12px; font-size:13px; line-height:1.75; color:var(--sub); }
 .case { margin-top:40px; }
 .case + .case { border-top:1px solid var(--line); padding-top:36px; }
@@ -50,22 +58,30 @@ figcaption { margin-top:12px; font-size:13px; line-height:1.75; color:var(--sub)
 .extra summary::after { margin-left:auto; }
 .extra figure { padding:0 18px 18px; }
 .background-heading { font-size:20px; margin-top:36px; margin-bottom:16px; }
-.lanf .skills { grid-template-columns:repeat(3,minmax(0,1fr)); }
-.lanf .skills li { font-size:16px; }
-.lanf .rows { margin-top:16px; }
-.lanf .rows li { font-size:16px; }
+.landf .skills { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.landf .skills li { font-size:16px; }
+.landf .rows { margin-top:16px; }
+.landf .rows li { font-size:16px; }
+.landf #background .exp { margin-top:28px; }
+.landf #background .exp li { padding:14px 0; }
+.landf #background .rows li { padding:8px 0; }
+.landf #background .background-heading { margin-top:28px; }
 @media (max-width:1100px) and (min-width:901px) {
-  .lanf main { padding-left:40px; padding-right:40px; }
-  .lanf .skills { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .landf main { padding-left:40px; padding-right:40px; }
+  .landf .skills { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
 @media (max-width:900px) {
-  .lanf .side nav { margin-top:20px; max-width:620px; gap:4px; }
-  .lanf .side nav a { font-size:14px; padding:8px 10px; }
-  .lanf .project h2 { font-size:26px; }
-  .lanf section { scroll-margin-top:16px; }
-  .lanf .skills { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .landf .side nav { margin-top:20px; max-width:620px; gap:4px; }
+  .landf .side nav a { font-size:14px; padding:8px 10px; }
+  .landf .project h2 { font-size:26px; }
+  .landf section { scroll-margin-top:16px; }
+  .landf main > section + section { margin-top:32px; padding-top:48px; }
+  .landf .project-head .lb { font-size:22px; }
+  .landf .skills { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
 @media (max-width:540px) {
+  .phone-shots { gap:12px; padding:12px; }
+  .phone-shots img { max-width:calc(50% - 6px); }
   .project-meta { grid-template-columns:1fr; gap:4px; }
   .project-meta dd + dt { margin-top:12px; }
   .story { grid-template-columns:1fr; gap:6px; }
@@ -83,5 +99,22 @@ figcaption { margin-top:12px; font-size:13px; line-height:1.75; color:var(--sub)
 }
 @media (prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
-  .lanf * { transition:none; }
+  .landf * { transition:none; }
 }
+
+
+/* 확정된 첫 화면 소개와 대표 성과 */
+.landf .intro {padding-top:4px;}
+.hero-kicker {font-size:14px;color:var(--sub);margin:0 0 24px;}
+.hero-title {font-size:44px;font-weight:800;line-height:1.4;letter-spacing:-1.7px;margin:0 0 24px;}
+.hero-title span {color:var(--blue);}
+.landf .hero-copy {font-size:17px;line-height:1.9;color:var(--sub);margin:0;max-width:760px;}
+.hero-results {list-style:none;padding:0;margin:32px 0 0;border-top:1px solid var(--line);}
+.hero-results li {border-bottom:1px solid var(--line);}
+.hero-results a {display:grid;grid-template-columns:112px 1fr 20px;gap:16px;align-items:center;padding:16px 0;color:var(--text);text-decoration:none;font-size:15px;line-height:1.65;}
+.hero-results .project-name {font-weight:700;color:var(--sub);font-size:14px;}
+.hero-results strong {color:var(--blue);font-weight:700;}
+.hero-results .arrow {color:var(--mute);}
+.hero-results a:hover .arrow {color:var(--blue);}
+@media(max-width:900px){.hero-title {font-size:34px;letter-spacing:-1px;}.landf .hero-copy{font-size:16px;}.hero-results a{grid-template-columns:90px 1fr 16px;gap:8px;}}
+@media(max-width:540px){.hero-title{font-size:29px;}.hero-results a{grid-template-columns:1fr 16px;}.hero-results .project-name{grid-column:1/-1;}.hero-kicker{margin-bottom:20px;}.hero-results{margin-top:24px;}}
