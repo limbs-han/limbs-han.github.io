@@ -1,122 +1,190 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>신입 데이터 엔지니어 사지한 포트폴리오</title>
-<meta name="description" content="신입 데이터 엔지니어 사지한의 포트폴리오">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="assets/style.css?v=6">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>데이터 엔지니어 사지한 포트폴리오</title>
+  <meta name="description" content="수집과 가공부터 서비스 전달까지. 데이터 엔지니어 사지한의 프로젝트와 판단, 검증 기록입니다.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="assets/portfolio.css?v=12">
+  <script src="assets/portfolio.js?v=2" defer></script>
 </head>
 <body>
-
+<a class="skip" href="#main">본문으로 이동</a>
 <aside class="side">
-  <img class="avatar" src="assets/img/photo.jpg" alt="사지한 프로필 사진">
-  <h1>사지한</h1>
-  <nav>
-    <a href="#intro" class="on">Introduction</a>
-    <a href="#skill">SkillSet</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#awards">Awards</a>
-    <a href="#cert">Certification</a>
-    <a href="#contact">Contact</a>
+  <div class="profile">
+    <img class="avatar" src="assets/img/photo.jpg" width="78" height="94" alt="사지한 프로필 사진">
+    <div><div class="name">사지한</div><p class="role">데이터 엔지니어 신입</p></div>
+  </div>
+  <nav aria-label="포트폴리오 목차">
+    <a class="active" href="#intro" aria-current="location"><span>01</span>소개</a>
+    <a href="#hannun"><span>02</span>한눈</a>
+    <a href="#cherry"><span>03</span>체리컨슘</a>
+    <a href="#namu"><span>04</span>namu-reco</a>
+    <a href="#cnc"><span>05</span>CNC 이상탐지</a>
+    <a href="#background"><span>06</span>기술과 경험</a>
+    <a href="#contact"><span>07</span>연락처</a>
   </nav>
+  <div class="side-bottom">
+    <a href="https://github.com/limbs-han" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    <a href="mailto:jihan0469@gmail.com">이메일 보내기 ↗</a>
+    <p class="edition">PORTFOLIO / 2026</p>
+  </div>
 </aside>
+<main id="main" tabindex="-1">
+  <section class="intro" id="intro" aria-labelledby="intro-title">
+    <p class="greeting">안녕하세요.</p>
+    <h1 id="intro-title">끝났다고 생각할 때 한 번 더 확인하는<br>데이터 엔지니어, <em>사지한</em>입니다.</h1>
+    <p class="intro-copy">결과가 기대한 값과 맞는지 보고, 차이가 있으면 어디서 생겼는지 찾아 기록합니다.</p>
+    <div class="intro-links"><a href="#hannun">프로젝트 살펴보기 ↓</a><a href="https://github.com/limbs-han" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+  </section>
 
-<main>
+  <nav class="project-index" aria-label="프로젝트 바로가기">
+    <a href="#hannun"><span class="num">01</span><div><strong>한눈</strong><small>뉴스 수집부터 분석 입력과 서비스 전달까지</small><span class="result">분석 입력 추출 46.6초 → 20.1초</span></div></a>
+    <a href="#cherry"><span class="num">02</span><div><strong>체리컨슘</strong><small>카드 약관을 승인된 혜택 데이터로</small><span class="result">승인 카탈로그 692장 앱 반영</span></div></a>
+    <a href="#namu"><span class="num">03</span><div><strong>namu-reco</strong><small>문서 덤프를 추천 데이터로 가공하고 배포</small><span class="result">8.8GB 덤프 → 약 52만 개 문서</span></div></a>
+    <a href="#cnc"><span class="num">04</span><div><strong>GAN 기반 CNC 이상탐지</strong><small>서로 다른 가공 사이클의 비교 기준 정리</small><span class="result">부하 상승 시점을 기준으로 정렬 제안</span></div></a>
+  </nav>
 
-<section id="intro" class="intro">
-  <h2 class="sec">Introduction</h2>
-  <div class="hello">안녕하세요.<br>늘 한 번 더 돌아보는 신입 데이터 엔지니어, <b>사지한</b>입니다.</div>
-  <p style="margin-top:22px">끝났다고 생각될 때 한 번 더 확인하는 습관이 있습니다.<br>그렇게 찾은 문제는 원인과 해결까지 기록으로 남깁니다.</p>
-  <div class="exp">
-    <h3>Overall Experiences</h3>
-    <ul>
-      <li><b>삼성 청년 SW 아카데미 (SSAFY) 15기</b><div class="d">2026.01 ~</div><p>특화 프로젝트에서 팀장이자 데이터 엔지니어로 뉴스 1,110만 건 수집과 적재 파이프라인을 맡았습니다.</p></li>
-      <li><b>알파에듀 현장실습, 연구개발팀</b><div class="d">2024.12 ~ 2025.02</div><p>사내 교육 플랫폼의 기존 기능을 데이터베이스 쿼리와 프로시저부터 읽어 파악했습니다.</p></li>
-      <li><b>국립창원대학교 정보통신공학과 졸업</b><div class="d">2020.03 ~ 2026.02</div></li>
-    </ul>
-  </div>
-</section>
+  <section class="project" id="hannun" aria-labelledby="hannun-title">
+    <header><p class="eyebrow">01 / 팀 프로젝트</p><h2 id="hannun-title">한눈</h2><p class="project-sub">13개 언론사의 뉴스를 사건별로 묶고 관점을 비교하는 서비스</p></header>
+    <dl class="project-meta">
+      <div><dt>기간</dt><dd>2026.08 ~ 2026.09 / 5인 팀</dd></div>
+      <div><dt>역할</dt><dd>팀장, 단독 데이터 엔지니어</dd></div>
+      <div class="meta-tech"><dt>기술</dt><dd>Python, PySpark, Kafka, Airflow, HDFS, Iceberg, Docker, AWS EC2</dd></div>
+    </dl>
+    <div class="project-evidence">
+      <figure class="project-visual"><svg class="hannun-screen" viewBox="0 0 1240 889" role="img" aria-label="사건별 뉴스와 언론사 관점을 보여 주는 한눈 서비스"><image href="assets/img/hannun-local.jpg" width="1265" height="889"/></svg><figcaption>보관된 분석 결과로 실행한 로컬 화면</figcaption></figure>
+      <div class="lead-result"><p>분석팀 입력 추출</p><strong>20.1<span>초</span></strong><p class="result-before">전환 전 46.6초 → <b>56.9% 단축</b></p></div>
+    </div>
+    <article class="focus-case" aria-labelledby="hannun-read-title">
+      <div class="case-heading"><span>핵심 판단</span><h3 id="hannun-read-title">새 기사가 쌓여, 저장소를 바꾸기 직전에 다시 대조했습니다.</h3></div>
+      <div class="case-layout">
+        <div class="case-copy">
+          <p>분석 입력을 만들 때 날짜 폴더 2,814개의 수정 시각을 확인했습니다. Iceberg로 읽기를 바꾸면서도 분석팀의 JSONL 입력과 새 기사 전달은 유지해야 했습니다.</p>
+          <p>폴더 시각 대신 테이블의 파일 목록과 행 수로 변경을 판단했습니다. 재구축 뒤에도 사흘간 새 기사가 들어왔으므로, 배치를 멈추고 <strong>두 저장소를 다시 대조한 뒤 읽기를 전환</strong>했습니다.</p>
+        </div>
+        <div class="case-proof">
+          <h4>전환 직전 대조</h4>
+          <dl class="proof-list"><div><dt>양쪽 총건수</dt><dd>각 11,153,241건</dd></div><div><dt>날짜별 건수</dt><dd>2,814개 날짜, 불일치 0개</dd></div><div><dt>기사 번호 중복</dt><dd>Iceberg에서 0건</dd></div></dl>
+        </div>
+      </div>
+    </article>
+    <div class="project-notes">
+      <article><h3 id="hannun-quality-title">중복 이슈 대응</h3><p>13일치 기록으로 번호 승계 문제를 찾고, 전달 직전 최근 3일과 비교해 번호를 연결했습니다. 첫 실행 <strong>374개 중 81개</strong>를 기존 번호로 연결하고 품질 지표 5개를 추가했습니다. 분석 원인은 담당자에게 넘겼습니다.</p></article>
+      <article><h3>담당 경계와 전달</h3><p>수집과 적재는 15분 주기, Spark는 단일 서버 local 모드입니다. Kafka 서버와 기사 분석은 팀원 담당입니다. 분석팀에 보내는 데이터 형식과 복구 절차를 문서로 남겼습니다.</p></article>
+    </div>
+    <div class="project-links"><a href="https://github.com/limbs-han/Hannun" target="_blank" rel="noopener noreferrer">프로젝트 저장소 ↗</a></div>
+  </section>
 
-<section id="skill">
-  <h2 class="sec">SkillSet</h2>
-  <p class="sub">사용하는 언어와 데이터 도구</p>
-  <div class="skillgroups">
-    <div class="sg"><span class="k">언어</span><ul class="skills"><li>Python</li><li>SQL</li></ul></div>
-    <div class="sg"><span class="k">수집과 스케줄</span><ul class="skills"><li>Kafka</li><li>Airflow</li></ul></div>
-    <div class="sg"><span class="k">처리</span><ul class="skills"><li>PySpark</li><li>Databricks</li></ul></div>
-    <div class="sg"><span class="k">저장</span><ul class="skills"><li>HDFS</li><li>Iceberg</li><li>Delta Lake</li><li>MySQL</li></ul></div>
-    <div class="sg"><span class="k">환경</span><ul class="skills"><li>Docker</li><li>AWS EC2</li></ul></div>
-  </div>
-  <p class="sub" style="margin-top:36px">개발 도구</p>
-  <div class="skillgroups"><div class="sg"><span class="k">협업</span><ul class="skills tools"><li>Git</li><li>GitHub</li><li>GitLab</li><li>Jira</li></ul></div></div>
-</section>
+  <section class="project" id="cherry" aria-labelledby="cherry-title">
+    <header><p class="eyebrow">02 / 개인 프로젝트</p><h2 id="cherry-title">체리컨슘</h2><p class="project-sub">카드별 실적과 혜택을 계산해 결제할 카드를 추천하는 앱</p></header>
+    <dl class="project-meta">
+      <div><dt>기간</dt><dd>2026.09 ~ 2026.10</dd></div>
+      <div><dt>역할</dt><dd>기획, 업무 규칙과 승인 기준, 검증 및 배포 결정. AI 도구로 구현</dd></div>
+      <div class="meta-tech"><dt>기술</dt><dd>Python, SQL, Databricks, PySpark, Delta Lake, LLM, Flutter, SQLite</dd></div>
+    </dl>
+    <div class="project-evidence project-evidence--cherry">
+      <div class="cherry-gallery" id="cherry-screens" aria-label="체리컨슘 서비스 화면">
+        <figure><img src="assets/img/cherry-store-home.png" width="1080" height="1920" alt="카드별 실적과 남은 혜택을 보여 주는 홈 화면" loading="lazy"><figcaption>홈</figcaption></figure>
+        <figure><img src="assets/img/cherry-store-recommend.png" width="1080" height="1920" alt="업종별 혜택을 비교하는 카드 추천 화면" loading="lazy"><figcaption>카드 추천</figcaption></figure>
+        <figure><img src="assets/img/cherry-store-history.png" width="1080" height="1920" alt="월별 거래와 예상 혜택을 보여 주는 이용 기록 화면" loading="lazy"><figcaption>월별 이용 기록</figcaption></figure>
+      </div>
+      <div class="lead-result"><p>앱에 반영한 승인 카탈로그</p><strong>692<span>장</span></strong><p class="result-before">확대 전 21장</p></div>
+    </div>
+    <article class="focus-case" aria-labelledby="cherry-pipeline-title">
+      <div class="case-heading"><span>핵심 판단</span><h3 id="cherry-pipeline-title">카드마다 다른 조건을 하나의 기본값으로 처리하지 않았습니다.</h3></div>
+      <div class="case-layout">
+        <div class="case-copy">
+          <p>할부 실적과 결제 취소 처리도 카드마다 달랐습니다. 계산 방식에 담지 못하는 조건은 미지원으로 남기고, <strong>형식이 맞는 초안과 실제 계산에 쓸 규칙을 분리</strong>했습니다.</p>
+          <p>원문이 바뀐 카드만 다시 추출했습니다. 검수를 통과한 카드 규칙을 카탈로그로 내보내고, GitHub를 거쳐 앱에 반영했습니다.</p>
+          <p class="case-tradeoff">원문 조사와 기대값 검증을 구현과 나눠, 통과 여부뿐 아니라 원문과 계산 근거를 확인했습니다.</p>
+        </div>
+        <div class="case-proof approval-proof" id="cherry-lineage" aria-label="실제 Databricks 초안과 승인 테이블">
+          <h4>원문 → 추출 초안 → 대조와 승인</h4>
+          <figure><div class="approval-label"><strong>추출 초안</strong><span>drafts</span></div><svg viewBox="4215 1165 705 1005" role="img" aria-label="초안에 남긴 모델과 프롬프트 버전 및 원문 경로"><image href="assets/img/cherry-lineage-full.png" width="6400" height="3600"/></svg></figure>
+          <figure><div class="approval-label"><strong>승인된 규칙</strong><span>card_revisions</span></div><svg viewBox="5545 1740 705 915" role="img" aria-label="승인 데이터의 적용 시점과 규칙 및 검수 기록"><image href="assets/img/cherry-lineage-full.png" width="6400" height="3600"/></svg></figure>
+          <p class="proof-source">실제 Databricks의 초안 테이블과 승인 테이블</p>
+        </div>
+      </div>
+    </article>
+    <div class="project-notes">
+      <article><h3 id="cherry-collect-title">수집 실패를 분리해 <em>95.0% → 99.3%</em></h3><p>PDF 해석이 수집기까지 종료시키던 문제를 별도 프로세스로 분리했습니다. 재수집 뒤 대상 1,846장 중 원문 확보가 <strong>1,754장 → 1,834장</strong>으로 늘었습니다.</p></article>
+      <article><h3 id="cherry-check-title">명세서 대조 <em>187건 중 170건 일치</em></h3><p>초기 Python 엔진을 5달치 명세서와 대조했습니다. 남은 17건은 조건 9건, 명세서 밖 혜택 5건, 이전 이력 2건, 혜택 구분 불가 1건으로 나눠 남겼습니다.</p></article>
+    </div>
+    <div class="project-links"><a href="https://github.com/limbs-han/CherryConsume" target="_blank" rel="noopener noreferrer">프로젝트 저장소 ↗</a></div>
+  </section>
 
-<section id="portfolio">
-  <h2 class="sec">Portfolio</h2>
-  <div class="cards">
-    <a class="card" href="projects/hannun.html">
-      <img src="assets/img/hannun_issue.png" alt="한눈 이슈 상세 화면">
-      <div class="inner"><div class="pname">한눈</div><h4>같은 사건 뉴스를 관점별로 나눠 보는 서비스</h4>
-        <p>SSAFY 특화 프로젝트입니다.<br>언론사 13곳 기사 1,110만 건을 모아 적재하는 파이프라인을 맡았습니다.</p>
-        <span class="more">자세히 보기</span></div></a>
-    <a class="card" href="projects/cherry.html">
-      <img src="assets/img/cherry_thumb.png" alt="체리컨슘 앱 화면">
-      <div class="inner"><div class="pname">체리컨슘</div><h4>내 카드로 어디서 결제할지 알려 주는 앱</h4>
-        <p>개인 프로젝트입니다.<br>카드사 원문을 승인된 혜택 데이터로 만드는 Databricks 파이프라인을 만들었습니다.</p>
-        <span class="more">자세히 보기</span></div></a>
-    <a class="card" href="projects/namu.html">
-      <img src="assets/img/namu_store.png" alt="나무위키에서 추천 문서가 펼쳐진 화면">
-      <div class="inner"><div class="pname">namu-reco</div><h4>읽은 문서로 다음 문서를 추천하는 크롬 확장</h4>
-        <p>개인 프로젝트입니다.<br>나무위키 덤프 8.8GB를 노트북 한 대로 처리해 2주 만에 웹스토어에 올렸습니다.</p>
-        <span class="more">자세히 보기</span></div></a>
-    <a class="card" href="projects/bbang.html">
-      <img src="assets/img/bbang_intro.jpg" alt="빵긋 추억 저장소 화면 소개">
-      <div class="inner"><div class="pname">빵긋</div><h4>웃음이 터진 순간만 남기는 AI 홈캠</h4>
-        <p>SSAFY 공통 프로젝트, 우수상입니다.<br>6명 팀에서 아이디어를 내고 PM과 AI 파트를 맡았습니다.</p>
-        <span class="more">자세히 보기</span></div></a>
-  </div>
-</section>
+  <section class="project" id="namu" aria-labelledby="namu-title">
+    <header><p class="eyebrow">03 / 개인 프로젝트</p><h2 id="namu-title">namu-reco</h2><p class="project-sub">읽은 나무위키 문서로 다음 문서를 추천하는 크롬 확장 프로그램</p></header>
+    <dl class="project-meta">
+      <div><dt>기간</dt><dd>2026.08 ~ 2026.09 / 첫 게시 이후 개선 포함</dd></div>
+      <div><dt>역할</dt><dd>기획, 개인정보 경계와 배포 구조 선택, 검증. AI 도구로 구현</dd></div>
+      <div class="meta-tech"><dt>기술</dt><dd>Python, PySpark, 문서 임베딩, IndexedDB, Chrome Extension</dd></div>
+    </dl>
+    <div class="project-evidence">
+      <figure class="project-visual"><img src="assets/img/namu_store.png" width="1186" height="742" alt="나무위키 문서 옆에 개인화 추천 목록을 보여 주는 확장 프로그램" loading="lazy"><figcaption>크롬 웹스토어에 등록한 서비스 화면</figcaption></figure>
+      <div class="lead-result"><p>8.8GB 덤프에서 가공한 문서</p><strong>약 52<span>만 개</span></strong><p class="result-before">521,633개 문서 / 19,015,524개 링크</p><small>1,024개 파일, 압축 합계 154.3MB 배포</small></div>
+    </div>
+    <article class="focus-case" aria-labelledby="namu-choice-title">
+      <div class="case-heading"><span>핵심 판단</span><h3 id="namu-choice-title">혼자 운영할 수 있는 범위를 먼저 정했습니다.</h3></div>
+      <div class="case-layout">
+        <div class="case-copy">
+          <p>열람 기록을 서버에 모으는 구조는 개인정보 처리와 운영 부담이 컸습니다. <strong>개인화는 브라우저에 남기고 추천 관계는 미리 계산</strong>해 파일로 배포하기로 했습니다.</p>
+          <p>8.8GB 처리 중 메모리 부족으로 멈췄을 때는 Spark 드라이버 메모리를 8GB에서 10GB로 늘리고, 파티션 크기를 128MB에서 64MB로 줄여 처리했습니다. 첫 버전은 2주 안에 완성해 스토어에 제출했습니다.</p>
+          <p class="case-tradeoff">서버를 두지 않는 대신 새 문서 대응과 사용자 로그를 통한 추천 품질 측정은 남았습니다.</p>
+        </div>
+        <div class="case-proof">
+          <h4>계산은 PC에서, 개인화는 브라우저에서</h4>
+          <ol class="pipeline-list"><li><span>01</span><div><strong>공식 덤프 8.8GB</strong><small>파싱과 정제 / 링크 해석률 95.6%</small></div></li><li><span>02</span><div><strong>문서별 추천 관계 계산</strong><small>미리 계산한 이웃 데이터</small></div></li><li><span>03</span><div><strong>GitHub Pages 파일 배포</strong><small>1,024개 파일 / 필요한 파일만 읽기</small></div></li><li><span>04</span><div><strong>IndexedDB에서 개인화</strong><small>열람 기록은 브라우저에 보관</small></div></li></ol>
+        </div>
+      </div>
+    </article>
+    <div class="project-notes project-notes--single"><article><h3>게시 후 바꾼 조건</h3><p>잠깐 연 문서가 추천 사유에 들어가, 누적 체류 30초 미만은 추천 기준에서 제외했습니다. 기록은 보존해 다시 읽으면 대상이 되게 했습니다. 30초는 초기 기준이며 추천 품질의 측정값은 아닙니다.</p></article></div>
+    <div class="project-links"><a href="https://github.com/limbs-han/namu-reco" target="_blank" rel="noopener noreferrer">프로젝트 저장소 ↗</a><a href="https://chromewebstore.google.com/detail/ndmfdfbdinhapjajelhfohchljncilme" target="_blank" rel="noopener noreferrer">크롬 웹스토어 ↗</a></div>
+  </section>
 
-<section id="awards">
-  <h2 class="sec">Awards</h2>
-  <ul class="rows">
-    <li><span>2026.08</span>SSAFY 공통 프로젝트 우수상</li>
-    <li><span>2025.11</span>이래가꼬 프로젝트 장려상</li>
-    <li><span>2025.08</span>한국전기전자학회 하계학술대회 우수논문상 장려상</li>
-    <li><span>2024.08</span>2024 학생창업유망팀 300+ 예비트랙 선정</li>
-  </ul>
-</section>
+  <section class="project" id="cnc" aria-labelledby="cnc-title">
+    <header><p class="eyebrow">04 / 기업 연계 졸업 프로젝트</p><h2 id="cnc-title">GAN 기반 CNC 이상탐지</h2><p class="project-sub">CNC 가공 설비의 부하 패턴에서 이상을 찾는 다빈소프트 연계 프로젝트</p></header>
+    <dl class="project-meta">
+      <div><dt>기간</dt><dd>2025.04 ~ 2025.06 / 4인 팀</dd></div>
+      <div><dt>역할</dt><dd>전처리, GAN 구현, 선정 모델 최적화와 최종 시험</dd></div>
+      <div class="meta-tech"><dt>기술</dt><dd>Python, PyTorch, GAN, 시계열 정렬과 선형보간</dd></div>
+    </dl>
+    <figure class="alignment-proof primary-alignment">
+      <div class="alignment-pair"><div><h4>정렬 전</h4><img src="assets/img/cnc-alignment-before.png" width="583" height="304" alt="부하 패턴의 위치가 어긋난 정렬 전 그래프" loading="lazy"></div><div><h4>정렬 후</h4><img src="assets/img/cnc-alignment-after.png" width="622" height="326" alt="시작점을 맞춰 주요 부하 패턴이 겹치는 정렬 후 그래프" loading="lazy"></div></div>
+      <figcaption>같은 가공 구간을 비교하도록 시작점을 정렬한 결과</figcaption>
+    </figure>
+    <article class="focus-case" aria-labelledby="cnc-choice-title">
+      <div class="case-heading"><span>핵심 판단</span><h3 id="cnc-choice-title">같은 순서의 값이 같은 가공 구간을 뜻해야 했습니다.</h3></div>
+      <div class="case-layout">
+        <div class="case-copy">
+          <p>사이클마다 시작점이 달라 서로 다른 가공 구간을 비교할 수 있었습니다. <strong>부하값이 상승하는 시점을 기준으로 시작점을 맞추자고 제안</strong>했습니다.</p>
+          <p>실제 전처리에서는 부하값과 직전 값의 변화를 보고 앞부분을 자른 뒤 시작 시각을 0으로 설정했습니다. 선형보간과 입력 길이 조정으로 비교 기준을 맞췄습니다.</p>
+          <p>실제 정상 데이터와 GAN이 생성한 정상 데이터를 합쳐 가공 시점별 정상 범위를 만들고, 범위 이탈을 기준으로 이상을 판단했습니다.</p>
+        </div>
+        <div class="case-proof cnc-test-proof">
+          <h4 id="cnc-test-title">별도 모델 시험 / 팀 최종 결과</h4>
+          <p>초기 정상 사이클 일부로 학습하고, 실제 불량 정답이 부족해 테스트 데이터의 5%에 이상을 주입했습니다.</p>
+          <dl class="test-results"><div><dt>재현율</dt><dd>100%</dd></div><div><dt>정밀도</dt><dd>62.50%</dd></div><div><dt>F1 점수</dt><dd>76.92%</dd></div></dl>
+        </div>
+      </div>
+    </article>
+  </section>
 
-<section id="cert">
-  <h2 class="sec">Certification</h2>
-  <ul class="rows">
-    <li><span>2026.09</span>정보처리기사</li>
-    <li><span>2025.04</span>DAsP 데이터아키텍처 준전문가</li>
-    <li><span>2024.06</span>SQLD SQL 개발자</li>
-    <li><span>2024.05</span>네트워크관리사 2급</li>
-  </ul>
-</section>
-
-<section id="contact">
-  <h2 class="sec">Contact Me</h2>
-  <ul class="rows">
-    <li><span>Email</span><a href="mailto:jihan0469@gmail.com">jihan0469@gmail.com</a></li>
-    <li><span>GitHub</span><a href="https://github.com/limbs-han" target="_blank" rel="noopener">https://github.com/limbs-han</a></li>
-  </ul>
-</section>
-
+  <section class="background" id="background" aria-labelledby="background-title">
+    <h2 id="background-title">기술과 경험</h2>
+    <div class="background-grid">
+      <div><h3>프로젝트에서 사용한 기술</h3><dl class="skill-list"><dt>언어</dt><dd>Python, SQL</dd><dt>처리</dt><dd>PySpark, Databricks</dd><dt>반복 실행</dt><dd>Airflow</dd><dt>메시지</dt><dd>Kafka 소비와 발행</dd><dt>저장</dt><dd>Iceberg, Delta Lake, SQLite, MySQL</dd><dt>환경</dt><dd>Docker, AWS EC2, Git, Jira</dd><dt>AI</dt><dd>LLM 추출 연계, PyTorch</dd></dl></div>
+      <div><h3>교육과 실무 경험</h3><ul class="experience"><li><strong>삼성 청년 SW·AI 아카데미 15기</strong><small>2026.01 ~</small><p>프로젝트 기반 소프트웨어 개발과 AI 교육</p></li><li><strong>알파에듀 연구개발팀 현장실습</strong><small>2024.12 ~ 2025.02</small><p>MariaDB 쿼리와 프로시저를 읽어 기존 교육 플랫폼 기능 파악</p></li><li><strong>국립창원대학교 정보통신공학과 졸업</strong><small>2020.03 ~ 2026.02</small></li><li><strong>국립창원대학교 Java 튜터</strong><small>2025.09 ~ 2025.11</small><p>편입생 2명 대상 총 8회 학습 지도와 코드 설명</p></li></ul></div>
+    </div>
+    <div class="background-grid credentials">
+      <div id="awards"><h3>수상과 선정</h3><ul class="dated-list"><li><time>2026.08</time><div>SSAFY 공통 프로젝트 우수상<small>빵긋, 6인 팀에서 PM과 앱 기능 연결 담당</small></div></li><li><time>2025.11</time><div>이래가꼬 프로젝트 장려상<small>GAN 기반 CNC 이상탐지</small></div></li><li><time>2025.08</time><div>한국전기전자학회 하계학술대회<br>우수논문상 장려상<small>GAN 기반 CNC 머신 이상영역 예측 기법</small></div></li><li><time>2024.08</time><div>학생창업유망팀 300+ 예비트랙 선정<small>FestivAR, 팀 선정</small></div></li></ul></div>
+      <div id="cert"><h3>자격</h3><ul class="dated-list"><li><time>2026.09</time><div>정보처리기사</div></li><li><time>2025.04</time><div>DAsP 데이터아키텍처 준전문가</div></li><li><time>2024.06</time><div>SQLD SQL 개발자</div></li><li><time>2024.05</time><div>네트워크관리사 2급</div></li></ul></div>
+    </div>
+  </section>
+  <section class="contact" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">연락처</h2><div class="contact-links"><a href="mailto:jihan0469@gmail.com">jihan0469@gmail.com ↗</a><a href="https://github.com/limbs-han" target="_blank" rel="noopener noreferrer">github.com/limbs-han ↗</a></div></section>
+  <footer>© 사지한</footer>
 </main>
-<footer>&copy; 사지한</footer>
-
-<script>
-const links = [...document.querySelectorAll('.side nav a')];
-const targets = links.map(a => document.querySelector(a.getAttribute('href')));
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) links.forEach((a, i) => a.classList.toggle('on', targets[i] === e.target));
-}), { rootMargin: '-40% 0px -55% 0px' });
-targets.forEach(t => t && io.observe(t));
-</script>
 </body>
 </html>
