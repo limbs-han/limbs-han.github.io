@@ -294,3 +294,5 @@ body{word-break:keep-all;overflow-wrap:break-word}
 .web-gallery img{aspect-ratio:16/11;object-fit:cover;object-position:left top}
 .project-head-links{gap:8px;flex-wrap:wrap}
 .project{padding-top:112px}.project>.project-heading{border-top:2px solid var(--ink)}
+.project-notes:has(>article:nth-child(3)){grid-template-columns:repeat(3,minmax(0,1fr))}
+.project-notes:has(>article:nth-child(4)){grid-template-columns:repeat(2,minmax(0,1fr))}

@@ -6,7 +6,7 @@
   <title>데이터 엔지니어 사지한 포트폴리오</title>
   <meta name="description" content="수집과 가공부터 서비스 전달까지. 데이터 엔지니어 사지한의 프로젝트와 판단, 검증 기록입니다.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/portfolio.css?v=29">
+  <link rel="stylesheet" href="assets/portfolio.css?v=31">
   <script src="assets/portfolio.js?v=2" defer></script>
 </head>
 <body>
@@ -59,7 +59,7 @@
 <figure class="project-visual"><img alt="뉴스 수집, Kafka, Spark와 HDFS의 Bronze, Iceberg Silver, Gold 이슈 피드, Kafka 발행을 거쳐 한눈 서비스로 가는 데이터 파이프라인. EC2 데이터 서버 안을 Airflow로 운영" height="1032" src="assets/img/hannun-architecture.webp" width="2560"/></figure>
 <div class="selection-lead">
 <div><p>정제 기사</p><strong>1,115만 건</strong></div>
-<div class="selection-reason"><p>2019년부터의 과거 기사와 13개 언론사 실시간 수집분을 기사당 1행의 공통 스키마로 합치고, 15분마다 갱신했습니다.</p></div>
+<div class="selection-reason"><p>기존 데이터셋 1,002만 건에 비어 있던 20개월치는 빅카인즈에서 채웠습니다. 빅카인즈 본문은 200자에서 잘려 기사 주소만 받고 본문은 직접 다시 추출해 145만 건을 더했고, 13개 언론사 실시간 수집분과 함께 기사당 1행의 공통 스키마로 합쳐 15분마다 갱신했습니다.</p></div>
 </div>
 <article aria-labelledby="hannun-read-title" class="focus-case">
 <div class="case-heading"><span>핵심 판단</span><h3 id="hannun-read-title">중복 이슈 번호 교정</h3></div>
@@ -102,7 +102,8 @@
 </dl>
 </article>
 <div class="project-notes">
-<article><h3>스캔 악보 칸 인식 <em>칸 주소 일치 20% → 63%</em></h3><p>칸을 찾은 순서대로 번호를 매기던 방식이라, 칸 하나만 빠져도 뒤 각의 주소가 모두 밀렸습니다. 굵은 각 구분선과 세로선을 기준으로 칸마다 (단, 열, 줄) 주소를 붙이도록 바꿨습니다. 규칙 조정에 쓰지 않은 확인용 8곡 기준입니다.</p></article>
+<article><h3>악보 인식 서버 <em>8곡 중 7곡 실패 → 8곡 일치</em></h3><p>PDF 글자 층, 스캔본, 오선보는 각각 다른 엔진으로 읽되, 모두 정간보 중간 형식을 거쳐 같은 공통 악보 변환기로 들어가게 해 어느 경로로 들어와도 같은 형식이 나오게 했습니다. 기존 도구가 실패하던 글자 층 정간보는 가려진 긴 선, 여러 단 판형, 겹친 글자를 처리해 1쪽 1.0초에 읽습니다.</p></article>
+<article><h3>공통 악보 변환기 <em>불변식 6종 검사</em></h3><p>박은 분수로 계산한 뒤 모든 분모의 최소공배수를 단위로 한 정수 틱으로 저장해 부동소수 오차를 없앴습니다. 음표 ID는 <code>c{각}-j{정간}</code>처럼 위치로 만들어 같은 입력이면 같은 ID가 나오게 했고, 이 ID로 운영 악보와 음표 단위 대조가 가능해졌습니다. 길이 합, 빈틈과 겹침, 참조, 율명, 개수, 두 번 변환한 결과의 바이트 일치 중 하나라도 어기면 결과 파일을 쓰지 않습니다.</p></article>
 <article><h3>채점 박자 판정 개선 <em>평균 54점 → 83점</em></h3><p>pYIN 음높이 추정과 DTW 정렬로 채점 엔진을 설계했습니다. 박자를 곡 처음부터 계산해 조금씩 느려지는 정상 연주까지 틀린 것으로 판정했고, 앞뒤 3음을 기준으로 판정하도록 바꿨습니다. 실제 입문자 녹음으로 잰 결과입니다.</p></article>
 </div>
 </section>
@@ -123,7 +124,7 @@
 <div class="selection-flow-wrap">
 <h3>카드 규칙 반영 흐름</h3>
 <ol class="selection-flow">
-<li><strong>카드사 원문</strong><p>약관과 상품 설명 수집</p></li>
+<li><strong>카드사 원문</strong><p>카드사 10곳 공시실 수집</p></li>
 <li><strong>추출 초안</strong><p>원문이 바뀐 카드만 다시 추출</p></li>
 <li><strong>승인 규칙</strong><p>원문 대조와 검수</p></li>
 <li><strong>앱 카탈로그</strong><p>승인한 카드 규칙 반영</p></li>
@@ -138,7 +139,7 @@
 <div><dt>상황</dt><dd><p>카드 규칙을 승인하면 MERGE가 옛 개정을 지우고 새 행을 넣었습니다.</p></dd></div>
 <div><dt>문제</dt><dd><p>그래서 앱이 어느 날 어떤 규칙으로 계산했는지 나중에 확인할 수 없었습니다. 변경 기록을 받아 따로 쌓으려 해도, 같은 판 안의 지우기와 넣기가 같은 순서 값을 가져 처리 순서가 정해지지 않았습니다.</p></dd></div>
 <div><dt>행동</dt><dd><p>승인 쓰기 방식을 바꾸는 대신 승인은 그대로 두고, 변경 데이터 피드를 AUTO CDC로 받아 SCD2 이력 표를 만들었습니다. 순서 값은 판 번호와 판 안의 차례로 묶어 지우기가 먼저 옛 행을 닫게 했고, 정리 작업이 변경 기록을 지우기 전에 읽도록 보존 기간을 60일로 늘렸습니다.</p><p>이력이 시간당 한 번 반영되는 점과, 되살릴 원천이 없어 이력 표를 전체 재적재할 수 없는 점은 감수했습니다.</p></dd></div>
-<div class="judgment-result"><dt>결과</dt><dd><p>운영 개정 <strong>22개</strong>를 이력 표에 처음 적재했고, 개발 환경에서 옛 행이 닫히고 새 행이 열리는 것을 확인했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>운영 개정 <strong>22개</strong>를 이력 표에 처음 적재했습니다.</p></dd></div>
 </dl>
 <div aria-label="실제 Databricks 초안과 승인 테이블" class="case-proof approval-proof" id="cherry-lineage">
 <h4>원문 → 추출 초안 → 대조와 승인</h4>
@@ -147,8 +148,9 @@
 <p class="proof-source">실제 Databricks의 초안 테이블과 승인 테이블</p>
 </div>
 </article>
-<div class="project-notes project-notes--single">
-<article><h3 id="cherry-check-title">초기 계산 엔진 검증</h3><p class="project-note-result"><strong>187건 중 170건 일치</strong></p><p>초기 Python 계산 엔진을 5개월치 명세서와 대조했습니다. 남은 17건은 조건 9건, 명세서 밖 혜택 5건, 이전 이력 2건, 혜택 구분 불가 1건으로 나눠 기록했습니다.</p></article>
+<div class="project-notes">
+<article><h3>카드사별 수집기 <em>판매 중 카드 1,955장 색인</em></h3><p>카드사가 상품 정보를 API로 제공하지 않아, 카드사 10곳의 공시실과 여신금융협회 공시를 카드사마다 따로 받아 읽는 수집기를 만들었습니다. 삼성은 페이지에 담긴 <code>__NUXT__</code> 값을 직접 풀어 읽었습니다. 신한이 GitHub 서버 주소의 접속을 끊어, 집 PC의 자체 호스팅 러너에서 11개 작업으로 나눠 돌렸습니다.</p></article>
+<article><h3 id="cherry-check-title">초기 계산 엔진 검증</h3><p class="project-note-result"><strong>187건 중 170건 일치</strong></p><p>초기 Python 계산 엔진을 5개월치 명세서와 대조했습니다.</p></article>
 </div>
 </section>
 
@@ -165,7 +167,7 @@
 <h3>추천 데이터 처리 흐름</h3>
 <ol class="selection-flow">
 <li><strong>PC에서 덤프 가공</strong><p>Spark로 문서를 읽고 정제 / 링크 해석률 95.6%</p></li>
-<li><strong>PC에서 추천 이웃 계산</strong><p>문서 내용을 숫자로 바꾼 임베딩과 문서 분류를 함께 사용</p></li>
+<li><strong>PC에서 추천 이웃 계산</strong><p>임베딩과 문서 분류를 함께 사용</p></li>
 <li><strong>GitHub Pages에 배포</strong><p>추천 데이터를 정적 파일로 나눠 공개</p></li>
 <li><strong>브라우저에서 개인화</strong><p>IndexedDB에 저장한 열람 기록으로 추천</p></li>
 </ol>
@@ -180,7 +182,7 @@
 <div><dt>상황</dt><dd><p>서버 없이 52만 문서의 추천 관계를 미리 계산해 GitHub Pages로 배포하는 구조였습니다.</p></dd></div>
 <div><dt>문제</dt><dd><p>GitHub Pages에는 사이트 1GB, 월 대역폭 100GB 한도가 있고, 브라우저는 문서 하나를 볼 때 필요한 조각만 받아야 했습니다. 이웃 계산량도 CPU로 9~30일이 걸리는 규모였습니다.</p></dd></div>
 <div><dt>행동</dt><dd><p>크기 기준을 전체 500MB, 파일 하나 1MB로 먼저 정하고 추천 결과를 1,024개 파일로 나눴습니다. 이웃 계산은 GPU 전수 탐색으로 바꿔 6분에 끝냈습니다.</p><p>새 문서를 바로 추천하지 못하고, 사용 지표가 없어 추천 품질을 잴 수 없으며, 사용자가 수천 명 규모가 되면 대역폭 한도를 다시 봐야 하는 점은 감수했습니다.</p></dd></div>
-<div class="judgment-result"><dt>결과</dt><dd><p>전체 <strong>154.3MB</strong>, 파일 하나 최대 <strong>0.176MB</strong>로 배포했고, 외부 요청 없이 2주 만에 크롬 웹스토어 첫 제출을 통과했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>전체 <strong>154.3MB</strong>, 파일 하나 최대 <strong>0.176MB</strong>로 배포했고, 2주 만에 크롬 웹스토어 첫 제출을 통과했습니다.</p></dd></div>
 </dl>
 </article>
 </section>
