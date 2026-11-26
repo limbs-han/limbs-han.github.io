@@ -293,3 +293,4 @@ body{word-break:keep-all;overflow-wrap:break-word}
 .web-gallery figcaption{font-size:13px;text-align:center;margin-top:8px;color:var(--body)}
 .web-gallery img{aspect-ratio:16/11;object-fit:cover;object-position:left top}
 .project-head-links{gap:8px;flex-wrap:wrap}
+.project{padding-top:112px}.project>.project-heading{border-top:2px solid var(--ink)}
