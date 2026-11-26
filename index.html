@@ -6,7 +6,7 @@
   <title>데이터 엔지니어 사지한 포트폴리오</title>
   <meta name="description" content="수집과 가공부터 서비스 전달까지. 데이터 엔지니어 사지한의 프로젝트와 판단, 검증 기록입니다.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/portfolio.css?v=19">
+  <link rel="stylesheet" href="assets/portfolio.css?v=28">
   <script src="assets/portfolio.js?v=2" defer></script>
 </head>
 <body>
@@ -34,13 +34,13 @@
 <main id="main" tabindex="-1">
   <section class="intro" id="intro" aria-labelledby="intro-title">
     <p class="greeting">안녕하세요.</p>
-    <h1 id="intro-title">데이터의 구조와 검증 기준을 함께 설계하는<br>데이터 엔지니어, <em>사지한</em>입니다.</h1>
-    <p class="intro-copy">현업 규칙을 데이터 모델에 담고, 실제 데이터가 그 기준을 충족하는지 검증합니다.</p>
+    <h1 id="intro-title">돌아가는 파이프라인을 멈추지 않고 바꾸는<br>데이터 엔지니어, <em>사지한</em>입니다.</h1>
+    <p class="intro-copy">뉴스, 악보, 카드 약관처럼 흩어진 원본을 서비스가 바로 쓰는 데이터로 만듭니다.</p>
     <div class="intro-links"><a href="#hannun">프로젝트 살펴보기 ↓</a></div>
   </section>
 
   <nav class="project-index" aria-label="프로젝트 바로가기">
-    <a href="#hannun"><span class="num">01</span><div><strong>한눈</strong><small>뉴스 수집부터 분석 입력과 서비스 전달까지</small><span class="result">분석팀에 보낼 데이터 추출 46.6초 → 20.1초</span></div></a>
+    <a href="#hannun"><span class="num">01</span><div><strong>한눈</strong><small>뉴스 수집부터 분석 입력과 서비스 전달까지</small><span class="result">정제 기사 1,115만 건, 15분 주기 갱신</span></div></a>
     <a href="#eolssu"><span class="num">02</span><div><strong>얼쑤</strong><small>악보 PDF를 채점용 데이터로 바꿔 운영 DB까지</small><span class="result">악보 인식 율명 정확도 63% → 80%</span></div></a>
     <a href="#cherry"><span class="num">03</span><div><strong>체리컨슘</strong><small>카드 약관을 승인된 혜택 데이터로</small><span class="result">승인된 카드 692종 앱에 반영</span></div></a>
     <a href="#namu"><span class="num">04</span><div><strong>namu-reco</strong><small>문서 덤프를 추천 데이터로 가공하고 배포</small><span class="result">8.8GB 덤프 → 약 52만 개 문서</span></div></a>
@@ -53,27 +53,26 @@
 <dl class="project-meta">
 <div><dt>기간</dt><dd>2026.08 ~ 2026.09 / 5인 팀</dd></div>
 <div><dt>역할</dt><dd>팀장, 데이터 엔지니어</dd></div>
-<div class="meta-tech"><dt>기술</dt><dd>Python, PySpark, Kafka, Airflow, HDFS, Iceberg, Docker, AWS EC2</dd></div>
+<div class="meta-tech"><dt>기술</dt><dd>Python, PySpark, Kafka, Airflow, HDFS, Iceberg, Docker</dd></div>
 </dl>
+<div aria-label="한눈 서비스 화면" class="web-gallery"><figure><img alt="화제성 높은 이슈와 최근 이슈를 보여 주는 메인 화면" height="889" loading="lazy" src="assets/img/hannun-main.webp" width="1265"/><figcaption>메인 이슈 목록</figcaption></figure><figure><img alt="관점 비율과 공통 사실 브리핑을 보여 주는 이슈 상세 화면" height="700" loading="lazy" src="assets/img/hannun-issue.webp" width="1220"/><figcaption>이슈 상세</figcaption></figure><figure><img alt="같은 이슈의 기사를 관점별로 묶어 보여 주는 화면" height="720" loading="lazy" src="assets/img/hannun-view.webp" width="850"/><figcaption>관점별 기사 모아보기</figcaption></figure></div>
+<figure class="project-visual"><img alt="뉴스 수집, Kafka, Spark와 HDFS의 Bronze, Iceberg Silver, Gold 이슈 피드, Kafka 발행을 거쳐 한눈 서비스로 가는 데이터 파이프라인. EC2 데이터 서버 안을 Airflow로 운영" height="1032" src="assets/img/hannun-architecture.webp" width="2560"/></figure>
 <div class="selection-lead">
-<div><p>분석팀 입력 생성 시간</p><strong>46.6초 → 20.1초</strong></div>
-<div class="selection-reason"><p>날짜 폴더 2,814개의 수정 시각을 확인하던 방식을 바꿨습니다. Iceberg 테이블의 파일 목록과 행 수로 변경된 날짜를 골라 다시 내보냈습니다.</p></div>
-</div><figure class="project-visual"><img alt="뉴스 수집, Kafka, Spark와 HDFS의 Bronze, Iceberg Silver, Gold 이슈 피드, Kafka 발행을 거쳐 한눈 서비스로 가는 데이터 파이프라인. EC2 데이터 서버 안을 Airflow로 운영" height="1032" src="assets/img/hannun-architecture.webp" width="2560"/></figure>
+<div><p>정제 기사</p><strong>1,115만 건</strong></div>
+<div class="selection-reason"><p>2019년부터의 과거 기사와 13개 언론사 실시간 수집분을 기사당 1행의 공통 스키마로 합치고, 15분마다 갱신했습니다.</p></div>
+</div>
 <article aria-labelledby="hannun-read-title" class="focus-case">
-<div class="case-heading"><span>핵심 판단</span><h3 id="hannun-read-title">전환 직전에 두 저장소를 다시 대조했습니다.</h3></div>
-<div class="case-layout">
-<div class="case-copy">
-<p>바뀐 날짜의 데이터만 다시 내보내면서 분석팀이 받는 JSONL 형식은 유지했습니다.</p>
-<p>재구축 뒤에도 사흘간 새 기사가 들어왔습니다. 기존 파일과 Iceberg의 총건수와 날짜별 건수를 다시 대조한 뒤 읽기를 전환했습니다.</p>
-</div>
-<div class="case-proof">
-<h4>전환 직전 대조</h4>
-<dl class="proof-list"><div><dt>양쪽 총건수</dt><dd>각 11,153,241건</dd></div><div><dt>날짜별 건수</dt><dd>2,814개 날짜, 불일치 0개</dd></div><div><dt>기사 번호 중복</dt><dd>Iceberg에서 0건</dd></div></dl>
-</div>
-</div>
+<div class="case-heading"><span>핵심 판단</span><h3 id="hannun-read-title">중복 이슈 번호 교정</h3></div>
+<dl class="judgment">
+<div><dt>상황</dt><dd><p>13개 언론사 기사를 사건별 이슈로 묶어 백엔드에 발행했는데, 같은 사건이 화면에 여러 이슈로 나왔습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>9월 7일부터 20일까지 이슈 번호를 이어받은 비율은 73.4%였고, 명백히 놓친 경우가 742건이었습니다. 날짜가 바뀌면 같은 사건에도 새 번호가 붙는 구조였습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>분석 단계를 고치는 방법, 저장된 Gold를 고치는 방법, 발행 직전에 바로잡는 방법을 비교해 발행 직전 교정을 골랐습니다. 각 단계의 담당 범위와 분석 결과 기록은 그대로 두고, 밖으로 나가는 데이터만 바로잡기 위해서입니다.</p><p>발행 직전에 최근 3일 이슈와 비교해 같은 사건이면 기존 번호를 쓰게 했고, 같은 사건으로 보는 기준은 분석 단계와 똑같이 맞춰 이슈의 계보가 갈리지 않게 했습니다. 대신 분석 단계의 규칙이 바뀌면 발행 쪽도 함께 바꿔야 하는 부담이 남아, 번호 부여 방식 개선은 과제로 공유했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>첫 실행에서 <strong>374개 중 81개</strong>를 기존 번호로 이었습니다.</p></dd></div>
+</dl>
 </article>
-<div class="project-notes project-notes--single">
-<article><h3 id="hannun-quality-title">중복 이슈 대응</h3><p>같은 사건에 새 번호가 붙어 서비스에 중복으로 보였습니다. 13일치 기록에서 이 문제를 찾은 뒤, 새 이슈를 내보내기 직전에 최근 3일 동안 발행한 이슈와 비교해 같은 사건이면 기존 번호를 쓰도록 했습니다. 첫 실행에서는 <strong>374개 중 81개</strong>를 기존 번호로 연결했고, 품질 지표 5개도 추가했습니다. 기사 분석 쪽 원인은 담당 팀원에게 넘겼습니다.</p></article></div>
+<div class="project-notes">
+<article><h3 id="hannun-quality-title">운영 중 저장 형식 전환 <em>날짜 2,814개 건수 불일치 0</em></h3><p>15분마다 기사가 들어오는 파이프라인을 멈추지 않고 정제 데이터를 Parquet에서 Iceberg로 옮겼습니다. 전환 뒤에는 바뀐 날짜를 폴더 탐색 대신 테이블 파일 목록으로 찾게 되어, 분석팀 입력 추출이 46.6초에서 20.1초로 줄었습니다.</p></article>
+<article><h3>Spark 쓰기 파일 정리 <em>커밋 30분 → 6초</em></h3><p>중복 제거는 article_id로 데이터를 나누고 저장은 날짜별로 해서, 나뉜 조각마다 날짜별 파일이 생겨 날짜 2,800개에 파일 545,600개가 쌓였습니다. 쓰기 직전에 <code>repartition("dt")</code>로 날짜 기준으로 다시 나눠 날짜당 파일 1개로 만들었습니다.</p></article></div>
 </section>
 
   <section aria-labelledby="eolssu-title" class="project" id="eolssu">
@@ -82,33 +81,29 @@
 <dl class="project-meta">
 <div><dt>기간</dt><dd>2026.10 ~ 2026.11 / 6인 팀</dd></div>
 <div><dt>역할</dt><dd>데이터 엔지니어, 악보 인식과 채점 엔진 설계</dd></div>
-<div class="meta-tech"><dt>기술</dt><dd>Python, MySQL, JSON Schema, OpenCV, librosa, Prometheus, Grafana</dd></div>
+<div class="meta-tech"><dt>기술</dt><dd>Python, MySQL, OpenCV, librosa</dd></div>
 </dl>
-<div class="selection-lead">
-<div><p>악보 인식 율명 정확도</p><strong>63% → 80%</strong></div>
-<div class="selection-reason"><p>인식 모델을 다시 학습하지 않고 틀린 유형부터 나눠 보니 옥타브 오류가 가장 많았습니다. 악기 음역으로 후보를 제한하고 글자 모양으로 옥타브를 다시 골라, 옥타브 오류를 44개에서 6개로 줄였습니다.</p></div>
-</div><figure class="project-visual"><img alt="원본 악보 PDF를 악보 인식, 정답 검수, 공통 악보 데이터로 바꾸고 운영 대조를 거쳐 운영 DB에 반영한 뒤 AI 채점 서버가 앱 녹음을 채점하는 데이터 파이프라인" height="952" loading="lazy" src="assets/img/eolssu-architecture.webp" width="2560"/></figure>
 <div aria-label="얼쑤 서비스 화면" class="cherry-gallery selection-gallery">
 <figure><img alt="단소 운지와 율명을 보며 아리랑을 연습하는 화면" height="1560" loading="lazy" src="assets/img/eolssu-practice.webp" width="720"/><figcaption>연습</figcaption></figure>
 <figure><img alt="음정, 박자, 음 길이 점수와 틀린 부분을 보여 주는 평가 결과 화면" height="1560" loading="lazy" src="assets/img/eolssu-result.webp" width="720"/><figcaption>평가 결과</figcaption></figure>
 <figure><img alt="틀린 구간을 골라 다시 연습하는 화면" height="1560" loading="lazy" src="assets/img/eolssu-retry.webp" width="720"/><figcaption>틀린 구간 다시 연습</figcaption></figure>
 </div>
-<article aria-labelledby="eolssu-db-title" class="focus-case">
-<div class="case-heading"><span>핵심 판단</span><h3 id="eolssu-db-title">검수한 곡만 운영 DB에서 채점을 켰습니다.</h3></div>
-<div class="case-layout">
-<div class="case-copy">
-<p>팀원이 재생용으로 먼저 올린 단소 46곡과 소금 23곡은 정답 검수 전이었습니다. 원본 PDF로 정답을 검수하고 운영 DB의 음표와 하나씩 대조해, <strong>채점에 쓰이는 값이 다르면 켜지 않았습니다.</strong></p>
-<p>운영 DB를 바꾸는 도구는 한 트랜잭션으로 묶고, 반영 전후를 해시와 재조회로 확인했습니다.</p>
-<p class="case-tradeoff">대조에서 운영 데이터가 틀렸다고 의심한 곡도 원본 PDF로 다시 판정해, 실제 오류인 곡만 바꿨습니다.</p>
+<figure class="project-visual"><img alt="원본 악보 PDF를 악보 인식, 정답 검수, 공통 악보 데이터로 바꾸고 운영 대조를 거쳐 운영 DB에 반영한 뒤 AI 채점 서버가 앱 녹음을 채점하는 데이터 파이프라인" height="952" loading="lazy" src="assets/img/eolssu-architecture.webp" width="2560"/></figure>
+<div class="selection-lead">
+<div><p>악보 인식 율명 정확도</p><strong>63% → 80%</strong></div>
 </div>
-<div class="case-proof">
-<h4>운영 반영 결과</h4>
-<dl class="proof-list"><div><dt>채점을 켠 곡</dt><dd>50곡</dd></div><div><dt>부분 적용</dt><dd>0건</dd></div><div><dt>운영에 빠진 숨표</dt><dd>43개 발견</dd></div><div><dt>실제 운영 오류</dt><dd>의심 5곡 중 2곡</dd></div></dl>
-</div>
-</div>
+<article aria-labelledby="eolssu-omr-title" class="focus-case">
+<div class="case-heading"><span>핵심 판단</span><h3 id="eolssu-omr-title">악보 인식 정확도 개선</h3></div>
+<dl class="judgment">
+<div><dt>상황</dt><dd><p>악보 PDF를 채점용 데이터로 바꾸기 위해 공개 악보 인식 모델을 썼습니다. 단소 실기교재 5곡을 읽자 율명 정확도는 63%였습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>틀린 유형을 나눠 보니 옥타브 오류가 가장 많았고, 모델이 아는 글자 142개 중 중청 계열은 하나뿐이었습니다. 재학습으로 풀려면 교재 자료를 학습에 써도 되는지, 평가 곡 분리, GPU와 배포까지 함께 정해야 했습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>재학습은 별도 과제로 남기고 인식 뒤 후처리로 고쳤습니다. 악기 음역으로 후보를 줄인 뒤 글자 모양으로 옥타브만 다시 고르게 했습니다.</p><p>곡별 율명 목록으로 제한하는 방법은 73%까지 올랐지만, 정답에서 뽑은 목록이라 실제보다 유리하게 재는 방식이어서 비교에서 뺐습니다. 칸 모양 일치가 100/120에서 97/120으로 조금 낮아지는 것은 감수했고, 80%에서 멈춰 사람이 인식 결과를 고치는 운영을 전제로 했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>옥타브 오류가 <strong>44개에서 6개</strong>로 줄었고, 곡 하나씩 빼고 검증해도 <strong>95%</strong>(75/79)를 유지했습니다.</p></dd></div>
+</dl>
 </article>
-<div class="project-notes project-notes--single">
-<article><h3>학습 모델 대신 계산 규칙으로 채점 <em>평균 54점 → 83점</em></h3><p>pYIN 음높이 추정과 DTW 정렬로 채점 엔진을 설계했습니다. 박자를 곡 처음부터 계산해 조금씩 느려지는 정상 연주까지 틀린 것으로 판정했고, 앞뒤 3음을 기준으로 판정하도록 바꿨습니다. 실제 입문자 녹음으로 잰 결과입니다.</p></article>
+<div class="project-notes">
+<article><h3>스캔 악보 칸 인식 <em>칸 주소 일치 20% → 63%</em></h3><p>칸을 찾은 순서대로 번호를 매기던 방식이라, 칸 하나만 빠져도 뒤 각의 주소가 모두 밀렸습니다. 굵은 각 구분선과 세로선을 기준으로 칸마다 (단, 열, 줄) 주소를 붙이도록 바꿨습니다. 규칙 조정에 쓰지 않은 확인용 8곡 기준입니다.</p></article>
+<article><h3>채점 박자 판정 개선 <em>평균 54점 → 83점</em></h3><p>pYIN 음높이 추정과 DTW 정렬로 채점 엔진을 설계했습니다. 박자를 곡 처음부터 계산해 조금씩 느려지는 정상 연주까지 틀린 것으로 판정했고, 앞뒤 3음을 기준으로 판정하도록 바꿨습니다. 실제 입문자 녹음으로 잰 결과입니다.</p></article>
 </div>
 </section>
 
@@ -118,59 +113,56 @@
 <dl class="project-meta">
 <div><dt>기간</dt><dd>2026.09 ~ 2026.10</dd></div>
 <div><dt>역할</dt><dd>기획, 업무 규칙과 승인 기준, 검증 및 배포 결정</dd></div>
-<div class="meta-tech"><dt>기술</dt><dd>Python, SQL, Databricks, PySpark, Delta Lake, LLM, Flutter, SQLite</dd></div>
+<div class="meta-tech"><dt>기술</dt><dd>Python, Databricks, PySpark, Delta Lake</dd></div>
 </dl>
-<div class="selection-lead">
-<div><p>앱 카드 카탈로그 확대</p><strong>21종 → 692종</strong></div>
-<div class="selection-reason"><p>카드사 원문을 바탕으로 규칙 초안을 만들고, 검수를 통과한 규칙을 앱 카탈로그에 반영했습니다.</p></div>
-</div><div class="selection-flow-wrap">
-<h3>원문을 계산 가능한 규칙으로 바꿨습니다.</h3>
+<div aria-label="체리컨슘 서비스 화면" class="cherry-gallery selection-gallery" id="cherry-screens">
+<figure><img alt="카드별 실적과 남은 혜택을 보여 주는 홈 화면" height="1920" loading="lazy" src="assets/img/cherry-store-home.png" width="1080"/><figcaption>홈</figcaption></figure>
+<figure><img alt="업종별 혜택을 비교하는 카드 추천 화면" height="1920" loading="lazy" src="assets/img/cherry-store-recommend.png" width="1080"/><figcaption>카드 추천</figcaption></figure>
+<figure><img alt="월별 거래와 예상 혜택을 보여 주는 이용 기록 화면" height="1920" loading="lazy" src="assets/img/cherry-store-history.png" width="1080"/><figcaption>월별 이용 기록</figcaption></figure>
+</div>
+<div class="selection-flow-wrap">
+<h3>카드 규칙 반영 흐름</h3>
 <ol class="selection-flow">
 <li><strong>카드사 원문</strong><p>약관과 상품 설명 수집</p></li>
 <li><strong>추출 초안</strong><p>원문이 바뀐 카드만 다시 추출</p></li>
 <li><strong>승인 규칙</strong><p>원문 대조와 검수</p></li>
 <li><strong>앱 카탈로그</strong><p>승인한 카드 규칙 반영</p></li>
 </ol>
-</div><div aria-label="체리컨슘 서비스 화면" class="cherry-gallery selection-gallery" id="cherry-screens">
-<figure><img alt="카드별 실적과 남은 혜택을 보여 주는 홈 화면" height="1920" loading="lazy" src="assets/img/cherry-store-home.png" width="1080"/><figcaption>홈</figcaption></figure>
-<figure><img alt="업종별 혜택을 비교하는 카드 추천 화면" height="1920" loading="lazy" src="assets/img/cherry-store-recommend.png" width="1080"/><figcaption>카드 추천</figcaption></figure>
-<figure><img alt="월별 거래와 예상 혜택을 보여 주는 이용 기록 화면" height="1920" loading="lazy" src="assets/img/cherry-store-history.png" width="1080"/><figcaption>월별 이용 기록</figcaption></figure>
+</div>
+<div class="selection-lead">
+<div><p>앱 카드 카탈로그 확대</p><strong>21종 → 692종</strong></div>
 </div>
 <article aria-labelledby="cherry-pipeline-title" class="focus-case">
-<div class="case-heading"><span>핵심 판단</span><h3 id="cherry-pipeline-title">계산에 쓸 수 있는 규칙만 반영했습니다.</h3></div>
-<div class="case-layout">
-<div class="case-copy">
-<p>할부 실적과 결제 취소 처리도 카드마다 달랐습니다. 계산 방식에 담지 못하는 조건은 미지원으로 남기고, <strong>형식이 맞는 초안과 실제 계산에 쓸 규칙을 분리</strong>했습니다.</p>
-<p>원문이 바뀐 카드만 다시 추출했습니다. 검수를 통과한 카드 규칙을 카탈로그로 내보내고, GitHub를 거쳐 앱에 반영했습니다.</p>
-<p class="case-tradeoff">원문 조사와 기대값 검증을 구현과 나눠, 통과 여부뿐 아니라 원문과 계산 근거를 확인했습니다.</p>
-</div>
+<div class="case-heading"><span>핵심 판단</span><h3 id="cherry-pipeline-title">카드 규칙 변경 이력 관리</h3></div>
+<dl class="judgment">
+<div><dt>상황</dt><dd><p>카드 규칙을 승인하면 MERGE가 옛 개정을 지우고 새 행을 넣었습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>그래서 앱이 어느 날 어떤 규칙으로 계산했는지 나중에 확인할 수 없었습니다. 변경 기록을 받아 따로 쌓으려 해도, 같은 판 안의 지우기와 넣기가 같은 순서 값을 가져 처리 순서가 정해지지 않았습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>승인 쓰기 방식을 바꾸는 대신 승인은 그대로 두고, 변경 데이터 피드를 AUTO CDC로 받아 SCD2 이력 표를 만들었습니다. 순서 값은 판 번호와 판 안의 차례로 묶어 지우기가 먼저 옛 행을 닫게 했고, 정리 작업이 변경 기록을 지우기 전에 읽도록 보존 기간을 60일로 늘렸습니다.</p><p>이력이 시간당 한 번 반영되는 점과, 되살릴 원천이 없어 이력 표를 전체 재적재할 수 없는 점은 감수했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>운영 개정 <strong>22개</strong>를 이력 표에 처음 적재했고, 개발 환경에서 옛 행이 닫히고 새 행이 열리는 것을 확인했습니다.</p></dd></div>
+</dl>
 <div aria-label="실제 Databricks 초안과 승인 테이블" class="case-proof approval-proof" id="cherry-lineage">
 <h4>원문 → 추출 초안 → 대조와 승인</h4>
 <figure><div class="approval-label"><strong>추출 초안</strong><span>drafts</span></div><img alt="초안에 남긴 모델과 프롬프트 버전 및 원문 경로" height="1005" loading="lazy" src="assets/img/cherry-drafts.webp" width="705"/></figure>
 <figure><div class="approval-label"><strong>승인된 규칙</strong><span>card_revisions</span></div><img alt="승인 데이터의 적용 시점과 규칙 및 검수 기록" height="915" loading="lazy" src="assets/img/cherry-card-revisions.webp" width="705"/></figure>
 <p class="proof-source">실제 Databricks의 초안 테이블과 승인 테이블</p>
 </div>
-</div>
 </article>
-<div class="project-notes">
-<article><h3 id="cherry-collect-title">수집 실패를 분리해 <em>95.0% → 99.3%</em></h3><p>PDF를 읽다가 오류가 나면 수집 작업도 함께 멈췄습니다. 그래서 PDF 해석을 별도 프로세스로 옮겨, 한 문서에서 오류가 나도 다음 수집을 이어가게 했습니다. 재수집 뒤 대상 1,846장 중 원문 확보가 <strong>1,754장 → 1,834장</strong>으로 늘었습니다.</p></article>
-<article><h3 id="cherry-check-title">초기 계산 엔진 검증</h3><p class="selection-verify-result"><strong>187건 중 170건 일치</strong></p><p>초기 Python 계산 엔진을 5개월치 명세서와 대조했습니다. 남은 17건은 조건 9건, 명세서 밖 혜택 5건, 이전 이력 2건, 혜택 구분 불가 1건으로 나눠 기록했습니다.</p></article>
+<div class="project-notes project-notes--single">
+<article><h3 id="cherry-check-title">초기 계산 엔진 검증</h3><p class="project-note-result"><strong>187건 중 170건 일치</strong></p><p>초기 Python 계산 엔진을 5개월치 명세서와 대조했습니다. 남은 17건은 조건 9건, 명세서 밖 혜택 5건, 이전 이력 2건, 혜택 구분 불가 1건으로 나눠 기록했습니다.</p></article>
 </div>
 </section>
 
   <section aria-labelledby="namu-title" class="project" id="namu">
 <header class="project-heading"><p class="eyebrow">04 / 개인 프로젝트</p><h2 id="namu-title">namu-reco</h2><p class="project-sub">읽은 나무위키 문서로 다음 문서를 추천하는 크롬 확장 프로그램</p>
-<div class="project-head-links"><a aria-label="namu-reco GitHub 저장소 새 창에서 열기" class="project-github" href="https://github.com/limbs-han/namu-reco" rel="noopener noreferrer" target="_blank"><span><svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3" fill="currentColor"></path></svg>GitHub</span></a></div></header>
+<div class="project-head-links"><a aria-label="namu-reco GitHub 저장소 새 창에서 열기" class="project-github" href="https://github.com/limbs-han/namu-reco" rel="noopener noreferrer" target="_blank"><span><svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3" fill="currentColor"></path></svg>GitHub</span></a><a aria-label="namu-reco 크롬 웹스토어 새 창에서 열기" class="project-github" href="https://chromewebstore.google.com/detail/ndmfdfbdinhapjajelhfohchljncilme" rel="noopener noreferrer" target="_blank"><span><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M14 4h6v6"></path><path d="M20 4l-9 9"></path><path d="M18 14v6H4V6h6"></path></svg>크롬 웹스토어</span></a></div></header>
 <dl class="project-meta">
 <div><dt>기간</dt><dd>2026.08 ~ 2026.09</dd></div>
 <div><dt>역할</dt><dd>기획, 개인정보 경계와 배포 구조 선택, 검증</dd></div>
-<div class="meta-tech"><dt>기술</dt><dd>Python, PySpark, 문서 임베딩, IndexedDB, Chrome Extension</dd></div>
+<div class="meta-tech"><dt>기술</dt><dd>Python, PySpark</dd></div>
 </dl>
-<div class="selection-lead">
-<div><p>8.8GB 원본 덤프</p><strong>실제 문서 521,633개</strong></div>
-<div class="selection-reason"><p>Spark로 원본을 읽고 다른 문서로 연결만 하는 항목을 제외했습니다. 추천에 쓸 문서 관계는 미리 계산해 필요한 파일만 받도록 나눴습니다.</p><small>링크 19,015,524개 / 배포 파일 1,024개 / 압축 합계 154.3MB</small></div>
-</div><div class="selection-flow-wrap">
-<h3>추천 데이터를 만드는 곳과 사용하는 곳</h3>
+<figure class="project-visual"><img alt="나무위키 문서 옆에 개인화 추천 목록을 보여 주는 확장 프로그램" height="742" loading="lazy" src="assets/img/namu_store.png" width="1186"/><figcaption>크롬 웹스토어에 등록한 서비스 화면</figcaption></figure>
+<div class="selection-flow-wrap">
+<h3>추천 데이터 처리 흐름</h3>
 <ol class="selection-flow">
 <li><strong>PC에서 덤프 가공</strong><p>Spark로 문서를 읽고 정제 / 링크 해석률 95.6%</p></li>
 <li><strong>PC에서 추천 이웃 계산</strong><p>문서 내용을 숫자로 바꾼 임베딩과 문서 분류를 함께 사용</p></li>
@@ -178,18 +170,19 @@
 <li><strong>브라우저에서 개인화</strong><p>IndexedDB에 저장한 열람 기록으로 추천</p></li>
 </ol>
 </div>
+<div class="selection-lead">
+<div><p>8.8GB 원본 덤프</p><strong>실제 문서 521,633개</strong></div>
+<div class="selection-reason"><small>링크 19,015,524개</small></div>
+</div>
 <article aria-labelledby="namu-choice-title" class="focus-case">
-<div class="case-heading"><span>핵심 판단</span><h3 id="namu-choice-title">추천은 미리 계산하고, 개인화는 브라우저에 남겼습니다.</h3></div>
-<div class="case-layout">
-<div class="case-copy">
-<p>열람 기록을 서버에 모으는 구조는 개인정보 처리와 운영 부담이 컸습니다. <strong>개인화는 브라우저에 남기고 추천 관계는 미리 계산</strong>해 파일로 배포하기로 했습니다.</p>
-<p>8.8GB 처리 중 메모리 부족으로 멈췄을 때는 Spark 드라이버 메모리를 8GB에서 10GB로 늘리고, 파티션 크기를 128MB에서 64MB로 줄여 처리했습니다.</p>
-<p class="case-tradeoff">서버를 두지 않는 대신 새 문서 대응과 사용자 로그를 통한 추천 품질 측정은 남았습니다.</p>
-</div>
-<figure class="project-visual"><img alt="나무위키 문서 옆에 개인화 추천 목록을 보여 주는 확장 프로그램" height="742" loading="lazy" src="assets/img/namu_store.png" width="1186"/><figcaption>크롬 웹스토어에 등록한 서비스 화면</figcaption></figure>
-</div>
+<div class="case-heading"><span>핵심 판단</span><h3 id="namu-choice-title">추천 데이터 정적 배포</h3></div>
+<dl class="judgment">
+<div><dt>상황</dt><dd><p>서버 없이 52만 문서의 추천 관계를 미리 계산해 GitHub Pages로 배포하는 구조였습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>GitHub Pages에는 사이트 1GB, 월 대역폭 100GB 한도가 있고, 브라우저는 문서 하나를 볼 때 필요한 조각만 받아야 했습니다. 이웃 계산량도 CPU로 9~30일이 걸리는 규모였습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>크기 기준을 전체 500MB, 파일 하나 1MB로 먼저 정하고 추천 결과를 1,024개 파일로 나눴습니다. 이웃 계산은 GPU 전수 탐색으로 바꿔 6분에 끝냈습니다.</p><p>새 문서를 바로 추천하지 못하고, 사용 지표가 없어 추천 품질을 잴 수 없으며, 사용자가 수천 명 규모가 되면 대역폭 한도를 다시 봐야 하는 점은 감수했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>전체 <strong>154.3MB</strong>, 파일 하나 최대 <strong>0.176MB</strong>로 배포했고, 외부 요청 없이 2주 만에 크롬 웹스토어 첫 제출을 통과했습니다.</p></dd></div>
+</dl>
 </article>
-<div class="project-links"><a href="https://chromewebstore.google.com/detail/ndmfdfbdinhapjajelhfohchljncilme" rel="noopener noreferrer" target="_blank">크롬 웹스토어 ↗</a></div>
 </section>
 
   <section aria-labelledby="cnc-title" class="project" id="cnc">
@@ -197,32 +190,31 @@
 <dl class="project-meta">
 <div><dt>기간</dt><dd>2025.04 ~ 2025.06 / 4인 팀</dd></div>
 <div><dt>역할</dt><dd>전처리, GAN 구현, 선정 모델 최적화와 최종 시험</dd></div>
-<div class="meta-tech"><dt>기술</dt><dd>Python, PyTorch, GAN, 시계열 정렬과 선형보간</dd></div>
+<div class="meta-tech"><dt>기술</dt><dd>Python, PyTorch, GAN</dd></div>
 </dl>
 <figure class="alignment-proof primary-alignment">
 <div class="alignment-pair"><div><h4>정렬 전</h4><img alt="부하 패턴의 위치가 어긋난 정렬 전 그래프" height="304" loading="lazy" src="assets/img/cnc-alignment-before.png" width="583"/></div><div><h4>정렬 후</h4><img alt="시작점을 맞춰 주요 부하 패턴이 겹치는 정렬 후 그래프" height="326" loading="lazy" src="assets/img/cnc-alignment-after.png" width="622"/></div></div>
 <figcaption>같은 가공 구간을 비교하도록 시작점을 정렬한 결과</figcaption>
 </figure>
 <article aria-labelledby="cnc-choice-title" class="focus-case">
-<div class="case-heading"><span>핵심 판단</span><h3 id="cnc-choice-title">같은 가공 구간을 비교하도록 시작점을 맞췄습니다.</h3></div>
-<div class="case-layout">
-<div class="case-copy">
-<p>가공 사이클마다 시작점이 달라, 같은 순서의 값을 놓고도 서로 다른 가공 구간을 비교하게 될 수 있었습니다. 그래서 <strong>부하값이 올라가는 시점을 기준으로 시작점을 맞추자고 제안</strong>했습니다.</p>
-<p>실제 전처리에서는 부하값과 직전 값의 변화를 보고 앞부분을 자른 뒤 시작 시각을 0으로 설정했습니다. 선형보간과 입력 길이 조정으로 비교 기준을 맞췄습니다.</p>
-<p>실제 불량을 표시한 데이터가 부족해 정상 패턴을 학습하는 방법을 검토했습니다. 팀은 LSTM과 비교한 뒤 정밀도와 재현율의 균형을 고려해 GAN을 선택했습니다.</p><p>실제 정상 데이터와 GAN이 생성한 정상 데이터를 합쳐 가공 시점별 정상 범위를 만들고, 범위 이탈을 기준으로 이상을 판단했습니다.</p>
-</div>
+<div class="case-heading"><span>핵심 판단</span><h3 id="cnc-choice-title">가공 사이클 시작점 정렬</h3></div>
+<dl class="judgment">
+<div><dt>상황</dt><dd><p>CNC 가공 사이클별 부하 패턴으로 가공 시점별 정상 범위를 만들어 이상을 판단하는 프로젝트였습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>사이클마다 시작점이 달라, 같은 순서의 값이 서로 다른 가공 구간을 가리켰습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>부하값이 오르는 시점을 기준으로 시작점을 맞추자고 제안했습니다. 실제 전처리에서는 부하값과 직전 값의 변화로 앞부분을 자르고 시작 시각을 0으로 두었고, 선형보간 뒤 가장 짧은 사이클 길이에 맞춰 길이를 통일했습니다. 기준점 앞 구간과 긴 사이클의 뒷부분을 버리는 것은 감수했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>모든 사이클을 <strong>950포인트</strong>로 맞춰, 실제와 GAN이 생성한 정상 데이터를 합친 가공 시점별 정상 범위를 만들었습니다.</p></dd></div>
+</dl>
 <div class="case-proof cnc-test-proof">
 <h4 id="cnc-test-title">합성 이상 시험 / 팀 최종 논문</h4>
 <dl class="test-results"><div><dt>재현율</dt><dd>100%</dd></div><div><dt>정밀도</dt><dd>62.50%</dd></div><div><dt>F1 점수</dt><dd>76.92%</dd></div></dl>
 <p class="selection-test-note">테스트 사이클의 5%를 골라 각 사이클의 한 시점에 이상을 넣은 시험 결과입니다.</p></div>
-</div>
 </article>
 </section>
 
   <section class="background" id="background" aria-labelledby="background-title">
     <h2 id="background-title">기술과 경험</h2>
     <div class="background-grid">
-      <div><h3>프로젝트에서 사용한 기술</h3><dl class="skill-list"><dt>언어</dt><dd>Python, SQL</dd><dt>처리</dt><dd>PySpark, Databricks</dd><dt>반복 실행</dt><dd>Airflow</dd><dt>메시지</dt><dd>Kafka 소비와 발행</dd><dt>저장</dt><dd>Iceberg, Delta Lake, SQLite, MySQL</dd><dt>환경</dt><dd>Docker, AWS EC2, Git, Jira</dd><dt>모니터링</dt><dd>Prometheus, Grafana</dd><dt>AI</dt><dd>LLM 추출 연계, PyTorch</dd></dl></div>
+      <div><h3>프로젝트에서 사용한 기술</h3><dl class="skill-list"><dt>언어</dt><dd>Python, SQL</dd><dt>처리</dt><dd>PySpark, Databricks</dd><dt>반복 실행</dt><dd>Airflow</dd><dt>메시지</dt><dd>Kafka 소비와 발행</dd><dt>저장</dt><dd>Iceberg, Delta Lake, MySQL</dd><dt>환경</dt><dd>Docker, Git, Jira</dd></dl></div>
       <div><h3>교육과 실무 경험</h3><ul class="experience"><li><strong>삼성 청년 SW·AI 아카데미 15기</strong><small>2026.01 ~</small><p>프로젝트 기반 소프트웨어 개발과 AI 교육</p></li><li><strong>알파에듀 연구개발팀 현장실습</strong><small>2024.12 ~ 2025.02</small><p>MariaDB 쿼리와 프로시저를 읽어 기존 교육 플랫폼 기능 파악</p></li><li><strong>국립창원대학교 정보통신공학과 졸업</strong><small>2020.03 ~ 2026.02</small></li></ul></div>
     </div>
     <div class="background-grid credentials">
