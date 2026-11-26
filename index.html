@@ -6,7 +6,7 @@
   <title>데이터 엔지니어 사지한 포트폴리오</title>
   <meta name="description" content="수집과 가공부터 서비스 전달까지. 데이터 엔지니어 사지한의 프로젝트와 판단, 검증 기록입니다.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/portfolio.css?v=31">
+  <link rel="stylesheet" href="assets/portfolio.css?v=33">
   <script src="assets/portfolio.js?v=2" defer></script>
 </head>
 <body>
@@ -35,7 +35,7 @@
   <section class="intro" id="intro" aria-labelledby="intro-title">
     <p class="greeting">안녕하세요.</p>
     <h1 id="intro-title">데이터의 구조와 흐름을 함께 설계하는<br>데이터 엔지니어, <em>사지한</em>입니다.</h1>
-    <p class="intro-copy">뉴스, 악보, 카드 약관처럼 흩어진 원본을 서비스가 바로 쓰는 데이터로 만듭니다.</p>
+    <p class="intro-copy">뉴스, 악보, 카드 약관처럼 형식이 제각각인 원본을 하나의 형식으로 맞추고,<br>서비스까지 이어지는 흐름을 만듭니다.</p>
     <div class="intro-links"><a href="#hannun">프로젝트 살펴보기 ↓</a></div>
   </section>
 
@@ -59,15 +59,15 @@
 <figure class="project-visual"><img alt="뉴스 수집, Kafka, Spark와 HDFS의 Bronze, Iceberg Silver, Gold 이슈 피드, Kafka 발행을 거쳐 한눈 서비스로 가는 데이터 파이프라인. EC2 데이터 서버 안을 Airflow로 운영" height="1032" src="assets/img/hannun-architecture.webp" width="2560"/></figure>
 <div class="selection-lead">
 <div><p>정제 기사</p><strong>1,115만 건</strong></div>
-<div class="selection-reason"><p>기존 데이터셋 1,002만 건에 비어 있던 20개월치는 빅카인즈에서 채웠습니다. 빅카인즈 본문은 200자에서 잘려 기사 주소만 받고 본문은 직접 다시 추출해 145만 건을 더했고, 13개 언론사 실시간 수집분과 함께 기사당 1행의 공통 스키마로 합쳐 15분마다 갱신했습니다.</p></div>
+<div class="selection-reason"><p>기존 데이터셋 1,002만 건에 비어 있던 20개월치는 빅카인즈에서 채웠습니다.<br>빅카인즈 본문은 200자에서 잘려, 기사 주소만 받고 본문은 직접 다시 추출해 145만 건을 더했습니다.<br>여기에 13개 언론사 실시간 수집분을 합쳐 기사당 1행의 공통 스키마로 15분마다 갱신했습니다.</p></div>
 </div>
 <article aria-labelledby="hannun-read-title" class="focus-case">
 <div class="case-heading"><span>핵심 판단</span><h3 id="hannun-read-title">중복 이슈 번호 교정</h3></div>
 <dl class="judgment">
-<div><dt>상황</dt><dd><p>13개 언론사 기사를 사건별 이슈로 묶어 백엔드에 발행했는데, 같은 사건이 화면에 여러 이슈로 나왔습니다.</p></dd></div>
-<div><dt>문제</dt><dd><p>9월 7일부터 20일까지 이슈 번호를 이어받은 비율은 73.4%였고, 명백히 놓친 경우가 742건이었습니다. 날짜가 바뀌면 같은 사건에도 새 번호가 붙는 구조였습니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>분석 단계를 고치는 방법, 저장된 Gold를 고치는 방법, 발행 직전에 바로잡는 방법을 비교해 발행 직전 교정을 골랐습니다. 각 단계의 담당 범위와 분석 결과 기록은 그대로 두고, 밖으로 나가는 데이터만 바로잡기 위해서입니다.</p><p>발행 직전에 최근 3일 이슈와 비교해 같은 사건이면 기존 번호를 쓰게 했고, 같은 사건으로 보는 기준은 분석 단계와 똑같이 맞춰 이슈의 계보가 갈리지 않게 했습니다. 대신 분석 단계의 규칙이 바뀌면 발행 쪽도 함께 바꿔야 하는 부담이 남아, 번호 부여 방식 개선은 과제로 공유했습니다.</p></dd></div>
-<div class="judgment-result"><dt>결과</dt><dd><p>첫 실행에서 <strong>374개 중 81개</strong>를 기존 번호로 이었습니다.</p></dd></div>
+<div><dt>상황</dt><dd><p>분석 단계는 하루 단위로 기사를 사건별로 묶어 이슈 번호를 붙이고, 전날과 같은 사건이면 전날 번호를 이어받게 되어 있었습니다.<br>데이터 파이프라인은 이 이슈를 번호 기준으로 백엔드에 발행했는데, 같은 사건이 화면에 여러 이슈로 나왔습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>원인을 찾아보니, 날짜가 바뀐 첫 실행에서 이어받기가 실패하면 그날 남은 실행이 그 번호를 그대로 따라갔습니다.<br>실제로 9월 7일부터 20일까지 이어받아야 할 이슈 중 73.4%만 이어받았고, 명백히 놓친 경우가 742건, 하루 평균 57건이었습니다.<br>그런데도 작업은 모두 성공으로 끝나 어떤 실패 지표에도 잡히지 않았습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>고칠 수 있는 곳은 분석 코드, 이미 저장된 이슈 결과인 Gold, 백엔드로 내보내기 직전의 세 곳이었습니다.<br>분석 코드는 분석 담당의 영역이고 Gold는 분석 결과의 원본 기록이라, 둘은 그대로 두고 내보내기 직전에서 바로잡았습니다.</p><p>그 자리에서, 오늘 이슈의 기사 중 2건 이상이자 과반이 최근 3일 안에 발행된 한 이슈에 있으면 그 번호를 쓰게 했습니다.<br>대신 분석 단계의 번호 규칙이 바뀌면 이 교정도 함께 바꿔야 해서, 측정 결과와 재현 자료를 분석 담당에게 넘겼습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>첫 실행에서 새 번호로 나갈 뻔한 이슈 <strong>81개</strong>를 기존 번호로 이었습니다.</p></dd></div>
 </dl>
 </article>
 <div class="project-notes">
@@ -95,10 +95,10 @@
 <article aria-labelledby="eolssu-omr-title" class="focus-case">
 <div class="case-heading"><span>핵심 판단</span><h3 id="eolssu-omr-title">악보 인식 정확도 개선</h3></div>
 <dl class="judgment">
-<div><dt>상황</dt><dd><p>악보 PDF를 채점용 데이터로 바꾸기 위해 공개 악보 인식 모델을 썼습니다. 단소 실기교재 5곡을 읽자 율명 정확도는 63%였습니다.</p></dd></div>
-<div><dt>문제</dt><dd><p>틀린 유형을 나눠 보니 옥타브 오류가 가장 많았고, 모델이 아는 글자 142개 중 중청 계열은 하나뿐이었습니다. 재학습으로 풀려면 교재 자료를 학습에 써도 되는지, 평가 곡 분리, GPU와 배포까지 함께 정해야 했습니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>재학습은 별도 과제로 남기고 인식 뒤 후처리로 고쳤습니다. 악기 음역으로 후보를 줄인 뒤 글자 모양으로 옥타브만 다시 고르게 했습니다.</p><p>곡별 율명 목록으로 제한하는 방법은 73%까지 올랐지만, 정답에서 뽑은 목록이라 실제보다 유리하게 재는 방식이어서 비교에서 뺐습니다. 칸 모양 일치가 100/120에서 97/120으로 조금 낮아지는 것은 감수했고, 80%에서 멈춰 사람이 인식 결과를 고치는 운영을 전제로 했습니다.</p></dd></div>
-<div class="judgment-result"><dt>결과</dt><dd><p>옥타브 오류가 <strong>44개에서 6개</strong>로 줄었고, 곡 하나씩 빼고 검증해도 <strong>95%</strong>(75/79)를 유지했습니다.</p></dd></div>
+<div><dt>상황</dt><dd><p>악보 PDF를 채점용 데이터로 바꾸려고 공개 악보 인식 모델을 썼는데, 단소 실기교재 5곡의 율명 정확도가 63%였습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>틀린 유형을 나눠 보니 옥타브 오류가 가장 많았습니다.<br>모델이 낼 수 있는 글자 142개 중 중청 계열이 하나뿐이라, 처음부터 맞힐 수 없는 글자가 있었기 때문입니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>그래서 먼저 단소가 낼 수 없는 음을 인식 후보에서 뺐습니다.<br>그다음 모델이 높은 음으로 읽은 자리는 정답 글자들의 평균 모양과 비교해 옥타브만 다시 골랐습니다.</p><p>곡마다 율명 목록을 정해 후보를 줄이는 방법도 73%까지 올랐지만 비교에서 뺐습니다.<br>정답에서 뽑은 목록이라 실제보다 유리하게 재는 방식이었기 때문입니다.<br>고른 방법은 칸을 나눈 모양을 맞힌 수가 120칸 중 100칸에서 97칸으로 줄었지만, 이는 감수했습니다.<br>정확도는 80%에서 멈추고, 남은 오류는 사람이 고치는 운영을 전제로 했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>옥타브 오류가 <strong>44개에서 6개</strong>로 줄었습니다.<br>또 한 곡씩 빼고 만든 평균 모양으로 다시 재도 옥타브를 고른 79자 중 75자, <strong>95%</strong>가 맞았습니다.</p></dd></div>
 </dl>
 </article>
 <div class="project-notes">
@@ -136,10 +136,10 @@
 <article aria-labelledby="cherry-pipeline-title" class="focus-case">
 <div class="case-heading"><span>핵심 판단</span><h3 id="cherry-pipeline-title">카드 규칙 변경 이력 관리</h3></div>
 <dl class="judgment">
-<div><dt>상황</dt><dd><p>카드 규칙을 승인하면 MERGE가 옛 개정을 지우고 새 행을 넣었습니다.</p></dd></div>
-<div><dt>문제</dt><dd><p>그래서 앱이 어느 날 어떤 규칙으로 계산했는지 나중에 확인할 수 없었습니다. 변경 기록을 받아 따로 쌓으려 해도, 같은 판 안의 지우기와 넣기가 같은 순서 값을 가져 처리 순서가 정해지지 않았습니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>승인 쓰기 방식을 바꾸는 대신 승인은 그대로 두고, 변경 데이터 피드를 AUTO CDC로 받아 SCD2 이력 표를 만들었습니다. 순서 값은 판 번호와 판 안의 차례로 묶어 지우기가 먼저 옛 행을 닫게 했고, 정리 작업이 변경 기록을 지우기 전에 읽도록 보존 기간을 60일로 늘렸습니다.</p><p>이력이 시간당 한 번 반영되는 점과, 되살릴 원천이 없어 이력 표를 전체 재적재할 수 없는 점은 감수했습니다.</p></dd></div>
-<div class="judgment-result"><dt>결과</dt><dd><p>운영 개정 <strong>22개</strong>를 이력 표에 처음 적재했습니다.</p></dd></div>
+<div><dt>상황</dt><dd><p>카드사 약관이 바뀌면 카드 혜택 규칙을 고쳐 승인했습니다.<br>그런데 승인 작업의 MERGE는 맞지 않는 옛 행을 지우고 새 행을 넣어서, 승인된 규칙 표에는 카드마다 지금 규칙만 남았습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>그래서 앱이 지난달 어떤 규칙으로 혜택을 계산했는지 나중에 확인할 수 없었습니다.<br>표의 변경 기록을 받아 이력을 따로 쌓으려 해도, 지우기와 넣기 중 무엇을 먼저 처리할지 정할 수 없었습니다.<br>승인 한 번이 같은 규칙에 옛 행 지우기와 새 행 넣기를 같은 버전 번호로 남겼기 때문입니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>승인 쓰기 방식은 그대로 두고, 변경 데이터 피드를 AUTO CDC로 받아 SCD2 이력 표를 만들었습니다.<br>이때 순서 값에 버전 안의 차례를 더해, 지우기가 먼저 옛 행을 닫고 넣기가 새 행을 열게 했습니다.<br>변경 기록은 기본 보존 기간이 지나면 표 정리 작업이 지웁니다.<br>그래서 이력 작업이 한동안 멈춰도 읽을 수 있게 보존 기간을 60일로 늘렸습니다.</p><p>대신 이력이 한 시간에 한 번까지만 반영되는 점과, 승인 표에 옛 행이 남지 않아 이력 표를 처음부터 다시 쌓을 수 없다는 점은 감수했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>운영 중인 카드 규칙 <strong>22개</strong>를 이력 표에 처음 적재했습니다.</p></dd></div>
 </dl>
 <div aria-label="실제 Databricks 초안과 승인 테이블" class="case-proof approval-proof" id="cherry-lineage">
 <h4>원문 → 추출 초안 → 대조와 승인</h4>
@@ -148,9 +148,8 @@
 <p class="proof-source">실제 Databricks의 초안 테이블과 승인 테이블</p>
 </div>
 </article>
-<div class="project-notes">
-<article><h3>카드사별 수집기 <em>판매 중 카드 1,955장 색인</em></h3><p>카드사가 상품 정보를 API로 제공하지 않아, 카드사 10곳의 공시실과 여신금융협회 공시를 카드사마다 따로 받아 읽는 수집기를 만들었습니다. 삼성은 페이지에 담긴 <code>__NUXT__</code> 값을 직접 풀어 읽었습니다. 신한이 GitHub 서버 주소의 접속을 끊어, 집 PC의 자체 호스팅 러너에서 11개 작업으로 나눠 돌렸습니다.</p></article>
-<article><h3 id="cherry-check-title">초기 계산 엔진 검증</h3><p class="project-note-result"><strong>187건 중 170건 일치</strong></p><p>초기 Python 계산 엔진을 5개월치 명세서와 대조했습니다.</p></article>
+<div class="project-notes project-notes--single">
+<article><h3>카드사별 수집기 <em>판매 중 카드 1,955장</em></h3><p>카드사가 상품 정보를 API로 제공하지 않아, 카드사 10곳과 여신금융협회의 공시 페이지에서 약관과 상품 설명서를 받아 오는 수집기를 카드사마다 만들었습니다. 처음에는 이미 아는 카드만 받아 올 수 있어서, 먼저 카드사마다 지금 판매 중인 카드 목록을 모으고 그 목록을 기준으로 받아 오게 했습니다.</p></article>
 </div>
 </section>
 
@@ -180,8 +179,8 @@
 <div class="case-heading"><span>핵심 판단</span><h3 id="namu-choice-title">추천 데이터 정적 배포</h3></div>
 <dl class="judgment">
 <div><dt>상황</dt><dd><p>서버 없이 52만 문서의 추천 관계를 미리 계산해 GitHub Pages로 배포하는 구조였습니다.</p></dd></div>
-<div><dt>문제</dt><dd><p>GitHub Pages에는 사이트 1GB, 월 대역폭 100GB 한도가 있고, 브라우저는 문서 하나를 볼 때 필요한 조각만 받아야 했습니다. 이웃 계산량도 CPU로 9~30일이 걸리는 규모였습니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>크기 기준을 전체 500MB, 파일 하나 1MB로 먼저 정하고 추천 결과를 1,024개 파일로 나눴습니다. 이웃 계산은 GPU 전수 탐색으로 바꿔 6분에 끝냈습니다.</p><p>새 문서를 바로 추천하지 못하고, 사용 지표가 없어 추천 품질을 잴 수 없으며, 사용자가 수천 명 규모가 되면 대역폭 한도를 다시 봐야 하는 점은 감수했습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>GitHub Pages에는 사이트 1GB, 월 대역폭 100GB 한도가 있고, 브라우저는 문서 하나를 볼 때 필요한 조각만 받아야 했습니다.<br>이웃 계산량도 CPU로 9~30일이 걸리는 규모였습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>전체 500MB, 파일 하나 1MB라는 크기 기준을 먼저 정했습니다.<br>그 기준에 맞춰 추천 결과를 문서 제목의 해시로 1,024개 파일에 나눠, 브라우저가 받을 파일을 바로 알게 했습니다.<br>9~30일이 걸리던 이웃 계산은 GPU 전수 탐색으로 바꿔 6분에 끝냈습니다.</p><p>대신 새 문서를 바로 추천하지 못하고 사용 지표가 없어 추천 품질을 잴 수 없는 점은 감수했습니다.<br>사용자가 수천 명 규모가 되면 대역폭 한도도 다시 봐야 합니다.</p></dd></div>
 <div class="judgment-result"><dt>결과</dt><dd><p>전체 <strong>154.3MB</strong>, 파일 하나 최대 <strong>0.176MB</strong>로 배포했고, 2주 만에 크롬 웹스토어 첫 제출을 통과했습니다.</p></dd></div>
 </dl>
 </article>
@@ -203,7 +202,7 @@
 <dl class="judgment">
 <div><dt>상황</dt><dd><p>CNC 가공 사이클별 부하 패턴으로 가공 시점별 정상 범위를 만들어 이상을 판단하는 프로젝트였습니다.</p></dd></div>
 <div><dt>문제</dt><dd><p>사이클마다 시작점이 달라, 같은 순서의 값이 서로 다른 가공 구간을 가리켰습니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>부하값이 오르는 시점을 기준으로 시작점을 맞추자고 제안했습니다. 실제 전처리에서는 부하값과 직전 값의 변화로 앞부분을 자르고 시작 시각을 0으로 두었고, 선형보간 뒤 가장 짧은 사이클 길이에 맞춰 길이를 통일했습니다. 기준점 앞 구간과 긴 사이클의 뒷부분을 버리는 것은 감수했습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>부하값이 오르는 시점을 기준으로 시작점을 맞추자고 제안했습니다.<br>실제 전처리에서는 부하값과 직전 값의 변화로 앞부분을 잘라 시작 시각을 0으로 두었습니다.<br>이어서 선형보간 뒤 가장 짧은 사이클 길이에 맞춰 길이를 통일했습니다.<br>이 과정에서 버려지는 기준점 앞 구간과 긴 사이클의 뒷부분은 감수했습니다.</p></dd></div>
 <div class="judgment-result"><dt>결과</dt><dd><p>모든 사이클을 <strong>950포인트</strong>로 맞춰, 실제와 GAN이 생성한 정상 데이터를 합친 가공 시점별 정상 범위를 만들었습니다.</p></dd></div>
 </dl>
 <div class="case-proof cnc-test-proof">
