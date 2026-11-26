@@ -6,7 +6,7 @@
   <title>데이터 엔지니어 사지한 포트폴리오</title>
   <meta name="description" content="수집과 가공부터 서비스 전달까지. 데이터 엔지니어 사지한의 프로젝트와 판단, 검증 기록입니다.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/portfolio.css?v=35">
+  <link rel="stylesheet" href="assets/portfolio.css?v=36">
   <script src="assets/portfolio.js?v=2" defer></script>
 </head>
 <body>
@@ -19,8 +19,8 @@
   <nav aria-label="포트폴리오 목차">
     <a class="active" href="#intro" aria-current="location"><span>01</span>소개</a>
     <a href="#hannun"><span>02</span>한눈</a>
-    <a href="#eolssu"><span>03</span>얼쑤</a>
-    <a href="#cherry"><span>04</span>체리컨슘</a>
+    <a href="#cherry"><span>03</span>체리컨슘</a>
+    <a href="#eolssu"><span>04</span>얼쑤</a>
     <a href="#namu"><span>05</span>namu-reco</a>
     <a href="#cnc"><span>06</span>CNC 이상탐지</a>
     <a href="#background"><span>07</span>기술과 경험</a>
@@ -41,8 +41,8 @@
 
   <nav class="project-index" aria-label="프로젝트 바로가기">
     <a href="#hannun"><span class="num">01</span><div><strong>한눈</strong><small>뉴스 수집부터 분석 입력과 서비스 전달까지</small><span class="result">정제 기사 1,115만 건, 15분 주기 갱신</span></div></a>
-    <a href="#eolssu"><span class="num">02</span><div><strong>얼쑤</strong><small>악보 PDF를 채점용 데이터로 바꿔 운영 DB까지</small><span class="result">악보 인식 율명 정확도 63% → 80%</span></div></a>
-    <a href="#cherry"><span class="num">03</span><div><strong>체리컨슘</strong><small>카드 약관을 승인된 혜택 데이터로</small><span class="result">승인된 카드 692종 앱에 반영</span></div></a>
+    <a href="#cherry"><span class="num">02</span><div><strong>체리컨슘</strong><small>카드 약관을 승인된 혜택 데이터로</small><span class="result">승인된 카드 692종 앱에 반영</span></div></a>
+    <a href="#eolssu"><span class="num">03</span><div><strong>얼쑤</strong><small>악보 PDF를 채점용 데이터로 바꿔 운영 DB까지</small><span class="result">악보 인식 율명 정확도 63% → 80%</span></div></a>
     <a href="#namu"><span class="num">04</span><div><strong>namu-reco</strong><small>문서 덤프를 추천 데이터로 가공하고 배포</small><span class="result">8.8GB 덤프 → 약 52만 개 문서</span></div></a>
     <a href="#cnc"><span class="num">05</span><div><strong>GAN 기반 CNC 이상탐지</strong><small>레이블 없는 설비 데이터로 이상 판정 기준 만들기</small><span class="result">이상을 넣은 시험에서 재현율 100%</span></div></a>
   </nav>
@@ -71,45 +71,12 @@
 </dl>
 </article>
 <div class="project-notes">
-<article><h3 id="hannun-quality-title">운영 중 저장 형식 전환 <em>날짜 2,814개 건수 불일치 0</em></h3><p>15분마다 기사가 들어오는 파이프라인을 멈추지 않고 정제 데이터를 Parquet에서 Iceberg로 옮겼습니다. 전환 뒤에는 바뀐 날짜를 폴더 탐색 대신 테이블 파일 목록으로 찾게 되어, 분석팀 입력 추출이 46.6초에서 20.1초로 줄었습니다.</p></article>
+<article><h3 id="hannun-quality-title">Parquet에서 Iceberg로 전환 <em>15분 주기 수집·적재 유지</em></h3><p>두 저장소에 동시에 적재하고, 2,814일치 기사 건수가 양쪽에서 일치한 뒤 읽기만 Iceberg로 옮겼습니다. 변경된 날짜를 테이블 파일 목록에서 찾게 바꿔, 분석팀 입력 추출을 46.6초에서 20.1초로 줄였습니다.</p></article>
 <article><h3>Spark 쓰기 파일 정리 <em>커밋 30분 → 6초</em></h3><p>중복 제거는 article_id로 데이터를 나누고 저장은 날짜별로 해서, 나뉜 조각마다 날짜별 파일이 생겨 날짜 2,800개에 파일 545,600개가 쌓였습니다. 쓰기 직전에 <code>repartition("dt")</code>로 날짜 기준으로 다시 나눠 날짜당 파일 1개로 만들었습니다.</p></article></div>
 </section>
 
-  <section aria-labelledby="eolssu-title" class="project" id="eolssu">
-<header class="project-heading"><p class="eyebrow">02 / 팀 프로젝트</p><h2 id="eolssu-title">얼쑤</h2><p class="project-sub">정간보 악보와 연주를 비교해 채점하는 국악기 연습 앱</p>
-<div class="project-head-links"><a aria-label="얼쑤 기술 블로그 글 새 창에서 열기" class="project-github" href="https://team-edo.github.io/posts/2026/11/octave-error-in-music-scoring/" rel="noopener noreferrer" target="_blank"><span><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M6 3h9l3 3v15H6z"></path><path d="M9 10h6M9 14h6M9 18h4"></path></svg>기술 블로그</span></a></div></header>
-<dl class="project-meta">
-<div><dt>기간</dt><dd>2026.10 ~ 2026.11 / 6인 팀</dd></div>
-<div><dt>역할</dt><dd>데이터 엔지니어, 악보 인식과 채점 엔진 설계</dd></div>
-<div class="meta-tech"><dt>기술</dt><dd>Python, MySQL, OpenCV, librosa</dd></div>
-</dl>
-<div aria-label="얼쑤 서비스 화면" class="cherry-gallery selection-gallery">
-<figure><img alt="단소 운지와 율명을 보며 아리랑을 연습하는 화면" height="1560" loading="lazy" src="assets/img/eolssu-practice.webp" width="720"/><figcaption>연습</figcaption></figure>
-<figure><img alt="음정, 박자, 음 길이 점수와 틀린 부분을 보여 주는 평가 결과 화면" height="1560" loading="lazy" src="assets/img/eolssu-result.webp" width="720"/><figcaption>평가 결과</figcaption></figure>
-<figure><img alt="틀린 구간을 골라 다시 연습하는 화면" height="1560" loading="lazy" src="assets/img/eolssu-retry.webp" width="720"/><figcaption>틀린 구간 다시 연습</figcaption></figure>
-</div>
-<figure class="project-visual"><img alt="원본 악보 PDF를 악보 인식, 정답 검수, 공통 악보 데이터로 바꾸고 운영 대조를 거쳐 운영 DB에 반영한 뒤 AI 채점 서버가 앱 녹음을 채점하는 데이터 파이프라인" height="952" loading="lazy" src="assets/img/eolssu-architecture.webp" width="2560"/></figure>
-<div class="selection-lead">
-<div><p>악보 인식 율명 정확도</p><strong>63% → 80%</strong></div>
-</div>
-<article aria-labelledby="eolssu-omr-title" class="focus-case">
-<div class="case-heading"><span>핵심 판단</span><h3 id="eolssu-omr-title">악보 인식 정확도 개선</h3></div>
-<dl class="judgment">
-<div><dt>상황</dt><dd><p>악보 PDF를 채점용 데이터로 바꾸려고 공개 악보 인식 모델을 썼는데, 단소 실기교재 5곡의 율명 정확도가 63%였습니다.</p></dd></div>
-<div><dt>문제</dt><dd><p>틀린 유형을 나눠 보니 옥타브 오류가 가장 많았습니다.<br>모델이 낼 수 있는 글자 142개 중 중청 계열이 하나뿐이라, 처음부터 맞힐 수 없는 글자가 있었기 때문입니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>그래서 먼저 단소가 낼 수 없는 음을 인식 후보에서 뺐습니다.<br>그다음 모델이 높은 음으로 읽은 자리는 정답 글자들의 평균 모양과 비교해 옥타브만 다시 골랐습니다.</p><p><strong>정답에서 뽑은 곡별 율명 목록으로 후보를 줄이면 73%까지 올랐지만, 실제보다 유리하게 재는 방식이라 뺐습니다.</strong><br>고른 방법은 칸을 나눈 모양을 맞힌 수가 120칸 중 100칸에서 97칸으로 줄었지만, 이는 감수했습니다.<br>정확도는 80%에서 멈추고, 남은 오류는 사람이 고치는 운영을 전제로 했습니다.</p></dd></div>
-<div class="judgment-result"><dt>결과</dt><dd><p>옥타브 오류가 <strong>44개에서 6개</strong>로 줄었습니다.<br>또 한 곡씩 빼고 만든 평균 모양으로 다시 재도 옥타브를 고른 79자 중 75자, <strong>95%</strong>가 맞았습니다.</p></dd></div>
-</dl>
-</article>
-<div class="project-notes">
-<article><h3>악보 인식 서버 <em>8곡 중 7곡 실패 → 8곡 일치</em></h3><p>PDF 글자 층, 스캔본, 오선보는 각각 다른 엔진으로 읽되, 모두 정간보 중간 형식을 거쳐 같은 공통 악보 변환기로 들어가게 해 어느 경로로 들어와도 같은 형식이 나오게 했습니다. 기존 도구가 실패하던 글자 층 정간보는 가려진 긴 선, 여러 단 판형, 겹친 글자를 처리해 1쪽 1.0초에 읽습니다.</p></article>
-<article><h3>공통 악보 변환기 <em>불변식 6종 검사</em></h3><p>박은 분수로 계산한 뒤 모든 분모의 최소공배수를 단위로 한 정수 틱으로 저장해 부동소수 오차를 없앴습니다. 음표 ID는 <code>c{각}-j{정간}</code>처럼 위치로 만들어 같은 입력이면 같은 ID가 나오게 했고, 이 ID로 운영 악보와 음표 단위 대조가 가능해졌습니다. 길이 합, 빈틈과 겹침, 참조, 율명, 개수, 두 번 변환한 결과의 바이트 일치 중 하나라도 어기면 결과 파일을 쓰지 않습니다.</p></article>
-<article><h3>채점 박자 판정 개선 <em>평균 54점 → 83점</em></h3><p>pYIN 음높이 추정과 DTW 정렬로 채점 엔진을 설계했습니다. 박자를 곡 처음부터 계산해 조금씩 느려지는 정상 연주까지 틀린 것으로 판정했고, 앞뒤 3음을 기준으로 판정하도록 바꿨습니다. 실제 입문자 녹음으로 잰 결과입니다.</p></article>
-</div>
-</section>
-
   <section aria-labelledby="cherry-title" class="project" id="cherry">
-<header class="project-heading"><p class="eyebrow">03 / 개인 프로젝트</p><h2 id="cherry-title">체리컨슘</h2><p class="project-sub">카드별 실적과 혜택을 계산해 결제할 카드를 추천하는 앱</p>
+<header class="project-heading"><p class="eyebrow">02 / 개인 프로젝트</p><h2 id="cherry-title">체리컨슘</h2><p class="project-sub">카드별 실적과 혜택을 계산해 결제할 카드를 추천하는 앱</p>
 <div class="project-head-links"><a aria-label="체리컨슘 GitHub 저장소 새 창에서 열기" class="project-github" href="https://github.com/limbs-han/CherryConsume" rel="noopener noreferrer" target="_blank"><span><svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3" fill="currentColor"></path></svg>GitHub</span></a></div></header>
 <dl class="project-meta">
 <div><dt>기간</dt><dd>2026.09 ~ 2026.10</dd></div>
@@ -138,7 +105,7 @@
 <dl class="judgment">
 <div><dt>상황</dt><dd><p>카드사 약관이 바뀌면 카드 혜택 규칙을 고쳐 승인했습니다.<br>그런데 승인 작업의 MERGE는 맞지 않는 옛 행을 지우고 새 행을 넣어서, 승인된 규칙 표에는 카드마다 지금 규칙만 남았습니다.</p></dd></div>
 <div><dt>문제</dt><dd><p>그래서 앱이 지난달 어떤 규칙으로 혜택을 계산했는지 나중에 확인할 수 없었습니다.<br>표의 변경 기록을 받아 이력을 따로 쌓으려 해도, 지우기와 넣기 중 무엇을 먼저 처리할지 정할 수 없었습니다.<br>승인 한 번이 같은 규칙에 옛 행 지우기와 새 행 넣기를 같은 버전 번호로 남겼기 때문입니다.</p></dd></div>
-<div><dt>행동</dt><dd><p><strong>승인 쓰기 방식은 그대로 두고, 변경 데이터 피드를 AUTO CDC로 받아 SCD2 이력 표를 만들었습니다.</strong><br>이때 순서 값에 버전 안의 차례를 더해, 지우기가 먼저 옛 행을 닫고 넣기가 새 행을 열게 했습니다.<br>변경 기록은 기본 보존 기간이 지나면 표 정리 작업이 지웁니다.<br>그래서 이력 작업이 한동안 멈춰도 읽을 수 있게 보존 기간을 60일로 늘렸습니다.</p><p>대신 이력이 한 시간에 한 번까지만 반영되는 점과, 승인 표에 옛 행이 남지 않아 이력 표를 처음부터 다시 쌓을 수 없다는 점은 감수했습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p><strong>승인 쓰기 방식은 그대로 두고, 변경 데이터 피드를 AUTO CDC로 받아 SCD2 이력 표를 만들었습니다.</strong><br>이때 순서 값에 버전 안의 차례를 더해, 지우기가 먼저 옛 행을 닫고 넣기가 새 행을 열게 했습니다.<br>이력 작업이 중단된 뒤에도 변경 기록을 다시 읽을 수 있게 보존 기간을 60일로 늘렸습니다.</p><p>대신 이력이 한 시간에 한 번까지만 반영되는 점과, 승인 표에 옛 행이 남지 않아 이력 표를 처음부터 다시 쌓을 수 없다는 점은 감수했습니다.</p></dd></div>
 <div class="judgment-result"><dt>결과</dt><dd><p>운영 중인 카드 규칙 <strong>22개</strong>를 이력 표에 처음 적재했습니다.</p></dd></div>
 </dl>
 <div aria-label="실제 Databricks 초안과 승인 테이블" class="case-proof approval-proof" id="cherry-lineage">
@@ -150,6 +117,38 @@
 </article>
 <div class="project-notes project-notes--single">
 <article><h3>카드사별 수집기 <em>판매 중 카드 1,955장</em></h3><p>카드사가 상품 정보를 API로 제공하지 않아, 카드사 10곳과 여신금융협회의 공시 페이지에서 약관과 상품 설명서를 받아 오는 수집기를 카드사마다 만들었습니다. 처음에는 이미 아는 카드만 받아 올 수 있어서, 먼저 카드사마다 지금 판매 중인 카드 목록을 모으고 그 목록을 기준으로 받아 오게 했습니다.</p></article>
+</div>
+</section>
+
+  <section aria-labelledby="eolssu-title" class="project" id="eolssu">
+<header class="project-heading"><p class="eyebrow">03 / 팀 프로젝트</p><h2 id="eolssu-title">얼쑤</h2><p class="project-sub">정간보 악보와 연주를 비교해 채점하는 국악기 연습 앱</p>
+<div class="project-head-links"><a aria-label="얼쑤 기술 블로그 글 새 창에서 열기" class="project-github" href="https://team-edo.github.io/posts/2026/11/octave-error-in-music-scoring/" rel="noopener noreferrer" target="_blank"><span><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M6 3h9l3 3v15H6z"></path><path d="M9 10h6M9 14h6M9 18h4"></path></svg>기술 블로그</span></a></div></header>
+<dl class="project-meta">
+<div><dt>기간</dt><dd>2026.10 ~ 2026.11 / 6인 팀</dd></div>
+<div><dt>역할</dt><dd>데이터 엔지니어, 악보 인식과 채점 엔진 설계</dd></div>
+<div class="meta-tech"><dt>기술</dt><dd>Python, MySQL, OpenCV, librosa</dd></div>
+</dl>
+<div aria-label="얼쑤 서비스 화면" class="cherry-gallery selection-gallery">
+<figure><img alt="단소 운지와 율명을 보며 아리랑을 연습하는 화면" height="1560" loading="lazy" src="assets/img/eolssu-practice.webp" width="720"/><figcaption>연습</figcaption></figure>
+<figure><img alt="음정, 박자, 음 길이 점수와 틀린 부분을 보여 주는 평가 결과 화면" height="1560" loading="lazy" src="assets/img/eolssu-result.webp" width="720"/><figcaption>평가 결과</figcaption></figure>
+<figure><img alt="틀린 구간을 골라 다시 연습하는 화면" height="1560" loading="lazy" src="assets/img/eolssu-retry.webp" width="720"/><figcaption>틀린 구간 다시 연습</figcaption></figure>
+</div>
+<figure class="project-visual"><img alt="원본 악보 PDF를 악보 인식, 정답 검수, 공통 악보 데이터로 바꾸고 운영 대조를 거쳐 운영 DB에 반영한 뒤 AI 채점 서버가 앱 녹음을 채점하는 데이터 파이프라인" height="952" loading="lazy" src="assets/img/eolssu-architecture.webp" width="2560"/></figure>
+<div class="selection-lead">
+<div><p>악보 인식 율명 정확도</p><strong>63% → 80%</strong></div>
+</div>
+<article aria-labelledby="eolssu-omr-title" class="focus-case">
+<div class="case-heading"><span>핵심 판단</span><h3 id="eolssu-omr-title">악보 인식 정확도 개선</h3></div>
+<dl class="judgment">
+<div><dt>상황</dt><dd><p>악보 PDF를 채점용 데이터로 바꾸려고 공개 악보 인식 모델을 썼는데, 단소 실기교재 5곡의 율명 정확도가 63%였습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>틀린 유형을 나눠 보니 옥타브 오류가 가장 많았습니다.<br>모델이 낼 수 있는 글자 142개 중 중청 계열이 하나뿐이라, 처음부터 맞힐 수 없는 글자가 있었기 때문입니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>그래서 먼저 단소가 낼 수 없는 음을 인식 후보에서 뺐습니다.<br><strong>높은 음으로 읽힌 글자를 평균 글자 모양과 비교해 옥타브를 다시 골랐습니다.</strong></p><p>이 방식에서 칸을 나눈 모양을 맞힌 수는 120칸 중 100칸에서 97칸으로 줄었습니다.<br>남은 인식 오류는 사람이 수정하는 운영을 전제로 했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>옥타브 오류가 <strong>44개에서 6개</strong>로 줄었습니다.<br>또 한 곡씩 빼고 만든 평균 모양으로 다시 재도 옥타브를 고른 79자 중 75자, <strong>95%</strong>가 맞았습니다.</p></dd></div>
+</dl>
+</article>
+<div class="project-notes">
+<article><h3>악보 인식 서버 <em>8곡 중 7곡 실패 → 8곡 일치</em></h3><p>PDF 글자 층, 스캔본, 오선보는 각각 다른 엔진으로 읽고, 결과는 같은 악보 데이터 형식으로 맞췄습니다. 기존 도구가 실패하던 글자 층 정간보는 가려진 긴 선, 여러 단 판형, 겹친 글자를 처리해 1쪽 1.0초에 읽습니다.</p></article>
+<article><h3>채점 박자 판정 개선 <em>평균 54점 → 83점</em></h3><p>pYIN 음높이 추정과 DTW 정렬로 채점 엔진을 설계했습니다. 박자를 곡 처음부터 계산해 조금씩 느려지는 정상 연주까지 틀린 것으로 판정했고, 앞뒤 3음을 기준으로 판정하도록 바꿨습니다. 실제 입문자 녹음으로 잰 결과입니다.</p></article>
 </div>
 </section>
 
@@ -180,7 +179,7 @@
 <dl class="judgment">
 <div><dt>상황</dt><dd><p>서버 없이 52만 문서의 추천 관계를 미리 계산해 GitHub Pages로 배포하는 구조였습니다.</p></dd></div>
 <div><dt>문제</dt><dd><p>GitHub Pages에는 사이트 1GB, 월 대역폭 100GB 한도가 있고, 브라우저는 문서 하나를 볼 때 필요한 조각만 받아야 했습니다.<br>이웃 계산량도 CPU로 9~30일이 걸리는 규모였습니다.</p></dd></div>
-<div><dt>행동</dt><dd><p><strong>전체 500MB, 파일 하나 1MB라는 크기 기준을 먼저 정했습니다.</strong><br>그 기준에 맞춰 추천 결과를 문서 제목의 해시로 1,024개 파일에 나눠, 브라우저가 받을 파일을 바로 알게 했습니다.<br>9~30일이 걸리던 이웃 계산은 GPU 전수 탐색으로 바꿔 6분에 끝냈습니다.</p><p>대신 새 문서를 바로 추천하지 못하고 사용 지표가 없어 추천 품질을 잴 수 없는 점은 감수했습니다.<br>사용자가 수천 명 규모가 되면 대역폭 한도도 다시 봐야 합니다.</p></dd></div>
+<div><dt>행동</dt><dd><p><strong>전체 500MB, 파일 하나 1MB라는 크기 기준을 먼저 정했습니다.</strong><br>그 기준에 맞춰 추천 결과를 문서 제목의 해시로 1,024개 파일에 나눠, 브라우저가 받을 파일을 바로 알게 했습니다.<br>9~30일이 걸리던 이웃 계산은 GPU 전수 탐색으로 바꿔 6분에 끝냈습니다.</p><p>새 문서는 바로 추천할 수 없었고, 사용 지표가 없어 추천 품질은 검증하지 못했습니다.</p></dd></div>
 <div class="judgment-result"><dt>결과</dt><dd><p>전체 <strong>154.3MB</strong>, 파일 하나 최대 <strong>0.176MB</strong>로 배포했고, 2주 만에 크롬 웹스토어 첫 제출을 통과했습니다.</p></dd></div>
 </dl>
 </article>
@@ -201,7 +200,7 @@
 <div class="case-heading"><span>핵심 판단</span><h3 id="cnc-choice-title">GAN 기반 정상 범위 생성</h3></div>
 <dl class="judgment">
 <div><dt>상황</dt><dd><p>기업이 준 CNC 설비 데이터는 정상 가공 기록뿐이라, 이상 사례도 정상과 이상을 구분한 레이블도 없었습니다.</p></dd></div>
-<div><dt>문제</dt><dd><p>그래서 지도학습은 처음부터 쓸 수 없었고, 정상 데이터만으로 판정 기준을 세워야 했습니다.<br>그런데 가공 도중에 이상을 잡으려면 다 쌓이기 전에 판단해야 해서, 정상 데이터도 처음 29개 사이클뿐이었습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>가공을 마치기 전에 이상을 판정해야 했고, 기준을 세울 때 쓸 수 있는 정상 기록은 초기 29회뿐이었습니다.</p></dd></div>
 <div><dt>행동</dt><dd><p>설비 이상은 놓치는 비용이 잘못 울리는 비용보다 크다고 보고, 재현율을 우선 지표로 정했습니다.<br>LSTM으로 판정하는 방식도 재현율은 90% 넘게 올렸지만, 정밀도와의 균형은 GAN 쪽이 나았습니다.<br><strong>그래서 GAN으로 정상 사이클 5,000개를 만들어 실제 29개와 합친 범위로 판정하는 쪽을 골랐습니다.</strong><br>생성한 사이클이 실제와 비슷한지는 그래프로만 비교해, 정량 검증이 부족한 점은 감수했습니다.</p></dd></div>
 <div class="judgment-result"><dt>결과</dt><dd><p>범위를 벗어난 지점이 3개 이상 쌓이면 이상으로 판정했습니다.<br>테스트 사이클의 5%에 이상을 넣은 시험에서 재현율 <strong>100%</strong>, F1 점수 <strong>76.92%</strong>를 얻었습니다.</p></dd></div>
 </dl>
@@ -211,7 +210,7 @@
   <section class="background" id="background" aria-labelledby="background-title">
     <h2 id="background-title">기술과 경험</h2>
     <div class="background-grid">
-      <div><h3>프로젝트에서 사용한 기술</h3><dl class="skill-list"><dt>언어</dt><dd>Python, SQL</dd><dt>처리</dt><dd>PySpark, Databricks</dd><dt>반복 실행</dt><dd>Airflow</dd><dt>메시지</dt><dd>Kafka 소비와 발행</dd><dt>저장</dt><dd>Iceberg, Delta Lake, MySQL</dd><dt>환경</dt><dd>Docker, Git, Jira</dd></dl></div>
+      <div><h3>프로젝트에서 사용한 기술</h3><dl class="skill-list"><dt>언어</dt><dd>Python, SQL</dd><dt>파이프라인</dt><dd>Kafka, PySpark, Databricks, Airflow</dd><dt>저장</dt><dd>Iceberg, Delta Lake, MySQL</dd><dt>환경</dt><dd>Docker, Git, Jira</dd></dl></div>
       <div><h3>교육과 실무 경험</h3><ul class="experience"><li><strong>삼성 청년 SW·AI 아카데미 15기</strong><small>2026.01 ~</small><p>프로젝트 기반 소프트웨어 개발과 AI 교육</p></li><li><strong>알파에듀 연구개발팀 현장실습</strong><small>2024.12 ~ 2025.02</small><p>MariaDB 쿼리와 프로시저를 읽어 기존 교육 플랫폼 기능 파악</p></li><li><strong>국립창원대학교 정보통신공학과 졸업</strong><small>2020.03 ~ 2026.02</small></li></ul></div>
     </div>
     <div class="background-grid credentials">
