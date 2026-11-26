@@ -6,7 +6,7 @@
   <title>데이터 엔지니어 사지한 포트폴리오</title>
   <meta name="description" content="수집과 가공부터 서비스 전달까지. 데이터 엔지니어 사지한의 프로젝트와 판단, 검증 기록입니다.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/portfolio.css?v=33">
+  <link rel="stylesheet" href="assets/portfolio.css?v=35">
   <script src="assets/portfolio.js?v=2" defer></script>
 </head>
 <body>
@@ -44,7 +44,7 @@
     <a href="#eolssu"><span class="num">02</span><div><strong>얼쑤</strong><small>악보 PDF를 채점용 데이터로 바꿔 운영 DB까지</small><span class="result">악보 인식 율명 정확도 63% → 80%</span></div></a>
     <a href="#cherry"><span class="num">03</span><div><strong>체리컨슘</strong><small>카드 약관을 승인된 혜택 데이터로</small><span class="result">승인된 카드 692종 앱에 반영</span></div></a>
     <a href="#namu"><span class="num">04</span><div><strong>namu-reco</strong><small>문서 덤프를 추천 데이터로 가공하고 배포</small><span class="result">8.8GB 덤프 → 약 52만 개 문서</span></div></a>
-    <a href="#cnc"><span class="num">05</span><div><strong>GAN 기반 CNC 이상탐지</strong><small>서로 다른 가공 사이클의 비교 기준 정리</small><span class="result">부하 상승 시점을 기준으로 정렬 제안</span></div></a>
+    <a href="#cnc"><span class="num">05</span><div><strong>GAN 기반 CNC 이상탐지</strong><small>레이블 없는 설비 데이터로 이상 판정 기준 만들기</small><span class="result">이상을 넣은 시험에서 재현율 100%</span></div></a>
   </nav>
 
   <section aria-labelledby="hannun-title" class="project" id="hannun">
@@ -66,7 +66,7 @@
 <dl class="judgment">
 <div><dt>상황</dt><dd><p>분석 단계는 하루 단위로 기사를 사건별로 묶어 이슈 번호를 붙이고, 전날과 같은 사건이면 전날 번호를 이어받게 되어 있었습니다.<br>데이터 파이프라인은 이 이슈를 번호 기준으로 백엔드에 발행했는데, 같은 사건이 화면에 여러 이슈로 나왔습니다.</p></dd></div>
 <div><dt>문제</dt><dd><p>원인을 찾아보니, 날짜가 바뀐 첫 실행에서 이어받기가 실패하면 그날 남은 실행이 그 번호를 그대로 따라갔습니다.<br>실제로 9월 7일부터 20일까지 이어받아야 할 이슈 중 73.4%만 이어받았고, 명백히 놓친 경우가 742건, 하루 평균 57건이었습니다.<br>그런데도 작업은 모두 성공으로 끝나 어떤 실패 지표에도 잡히지 않았습니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>고칠 수 있는 곳은 분석 코드, 이미 저장된 이슈 결과인 Gold, 백엔드로 내보내기 직전의 세 곳이었습니다.<br>분석 코드는 분석 담당의 영역이고 Gold는 분석 결과의 원본 기록이라, 둘은 그대로 두고 내보내기 직전에서 바로잡았습니다.</p><p>그 자리에서, 오늘 이슈의 기사 중 2건 이상이자 과반이 최근 3일 안에 발행된 한 이슈에 있으면 그 번호를 쓰게 했습니다.<br>대신 분석 단계의 번호 규칙이 바뀌면 이 교정도 함께 바꿔야 해서, 측정 결과와 재현 자료를 분석 담당에게 넘겼습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>고칠 수 있는 곳은 분석 코드, 이미 저장된 이슈 결과인 Gold, 백엔드로 내보내기 직전의 세 곳이었습니다.<br><strong>분석 코드와 Gold는 건드리지 않고 내보내기 직전에서 바로잡았습니다.</strong><br>분석 코드는 분석 담당의 영역이고, Gold는 분석 결과의 원본 기록이기 때문입니다.</p><p>내보내기 직전에서는, 오늘 이슈의 기사 중 2건 이상이자 과반이 최근 3일 안에 발행된 한 이슈에 있으면 그 번호를 쓰게 했습니다.<br>대신 분석 단계의 번호 규칙이 바뀌면 이 교정도 함께 바꿔야 해서, 측정 결과와 재현 자료를 분석 담당에게 넘겼습니다.</p></dd></div>
 <div class="judgment-result"><dt>결과</dt><dd><p>첫 실행에서 새 번호로 나갈 뻔한 이슈 <strong>81개</strong>를 기존 번호로 이었습니다.</p></dd></div>
 </dl>
 </article>
@@ -97,7 +97,7 @@
 <dl class="judgment">
 <div><dt>상황</dt><dd><p>악보 PDF를 채점용 데이터로 바꾸려고 공개 악보 인식 모델을 썼는데, 단소 실기교재 5곡의 율명 정확도가 63%였습니다.</p></dd></div>
 <div><dt>문제</dt><dd><p>틀린 유형을 나눠 보니 옥타브 오류가 가장 많았습니다.<br>모델이 낼 수 있는 글자 142개 중 중청 계열이 하나뿐이라, 처음부터 맞힐 수 없는 글자가 있었기 때문입니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>그래서 먼저 단소가 낼 수 없는 음을 인식 후보에서 뺐습니다.<br>그다음 모델이 높은 음으로 읽은 자리는 정답 글자들의 평균 모양과 비교해 옥타브만 다시 골랐습니다.</p><p>곡마다 율명 목록을 정해 후보를 줄이는 방법도 73%까지 올랐지만 비교에서 뺐습니다.<br>정답에서 뽑은 목록이라 실제보다 유리하게 재는 방식이었기 때문입니다.<br>고른 방법은 칸을 나눈 모양을 맞힌 수가 120칸 중 100칸에서 97칸으로 줄었지만, 이는 감수했습니다.<br>정확도는 80%에서 멈추고, 남은 오류는 사람이 고치는 운영을 전제로 했습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>그래서 먼저 단소가 낼 수 없는 음을 인식 후보에서 뺐습니다.<br>그다음 모델이 높은 음으로 읽은 자리는 정답 글자들의 평균 모양과 비교해 옥타브만 다시 골랐습니다.</p><p><strong>정답에서 뽑은 곡별 율명 목록으로 후보를 줄이면 73%까지 올랐지만, 실제보다 유리하게 재는 방식이라 뺐습니다.</strong><br>고른 방법은 칸을 나눈 모양을 맞힌 수가 120칸 중 100칸에서 97칸으로 줄었지만, 이는 감수했습니다.<br>정확도는 80%에서 멈추고, 남은 오류는 사람이 고치는 운영을 전제로 했습니다.</p></dd></div>
 <div class="judgment-result"><dt>결과</dt><dd><p>옥타브 오류가 <strong>44개에서 6개</strong>로 줄었습니다.<br>또 한 곡씩 빼고 만든 평균 모양으로 다시 재도 옥타브를 고른 79자 중 75자, <strong>95%</strong>가 맞았습니다.</p></dd></div>
 </dl>
 </article>
@@ -138,7 +138,7 @@
 <dl class="judgment">
 <div><dt>상황</dt><dd><p>카드사 약관이 바뀌면 카드 혜택 규칙을 고쳐 승인했습니다.<br>그런데 승인 작업의 MERGE는 맞지 않는 옛 행을 지우고 새 행을 넣어서, 승인된 규칙 표에는 카드마다 지금 규칙만 남았습니다.</p></dd></div>
 <div><dt>문제</dt><dd><p>그래서 앱이 지난달 어떤 규칙으로 혜택을 계산했는지 나중에 확인할 수 없었습니다.<br>표의 변경 기록을 받아 이력을 따로 쌓으려 해도, 지우기와 넣기 중 무엇을 먼저 처리할지 정할 수 없었습니다.<br>승인 한 번이 같은 규칙에 옛 행 지우기와 새 행 넣기를 같은 버전 번호로 남겼기 때문입니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>승인 쓰기 방식은 그대로 두고, 변경 데이터 피드를 AUTO CDC로 받아 SCD2 이력 표를 만들었습니다.<br>이때 순서 값에 버전 안의 차례를 더해, 지우기가 먼저 옛 행을 닫고 넣기가 새 행을 열게 했습니다.<br>변경 기록은 기본 보존 기간이 지나면 표 정리 작업이 지웁니다.<br>그래서 이력 작업이 한동안 멈춰도 읽을 수 있게 보존 기간을 60일로 늘렸습니다.</p><p>대신 이력이 한 시간에 한 번까지만 반영되는 점과, 승인 표에 옛 행이 남지 않아 이력 표를 처음부터 다시 쌓을 수 없다는 점은 감수했습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p><strong>승인 쓰기 방식은 그대로 두고, 변경 데이터 피드를 AUTO CDC로 받아 SCD2 이력 표를 만들었습니다.</strong><br>이때 순서 값에 버전 안의 차례를 더해, 지우기가 먼저 옛 행을 닫고 넣기가 새 행을 열게 했습니다.<br>변경 기록은 기본 보존 기간이 지나면 표 정리 작업이 지웁니다.<br>그래서 이력 작업이 한동안 멈춰도 읽을 수 있게 보존 기간을 60일로 늘렸습니다.</p><p>대신 이력이 한 시간에 한 번까지만 반영되는 점과, 승인 표에 옛 행이 남지 않아 이력 표를 처음부터 다시 쌓을 수 없다는 점은 감수했습니다.</p></dd></div>
 <div class="judgment-result"><dt>결과</dt><dd><p>운영 중인 카드 규칙 <strong>22개</strong>를 이력 표에 처음 적재했습니다.</p></dd></div>
 </dl>
 <div aria-label="실제 Databricks 초안과 승인 테이블" class="case-proof approval-proof" id="cherry-lineage">
@@ -180,7 +180,7 @@
 <dl class="judgment">
 <div><dt>상황</dt><dd><p>서버 없이 52만 문서의 추천 관계를 미리 계산해 GitHub Pages로 배포하는 구조였습니다.</p></dd></div>
 <div><dt>문제</dt><dd><p>GitHub Pages에는 사이트 1GB, 월 대역폭 100GB 한도가 있고, 브라우저는 문서 하나를 볼 때 필요한 조각만 받아야 했습니다.<br>이웃 계산량도 CPU로 9~30일이 걸리는 규모였습니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>전체 500MB, 파일 하나 1MB라는 크기 기준을 먼저 정했습니다.<br>그 기준에 맞춰 추천 결과를 문서 제목의 해시로 1,024개 파일에 나눠, 브라우저가 받을 파일을 바로 알게 했습니다.<br>9~30일이 걸리던 이웃 계산은 GPU 전수 탐색으로 바꿔 6분에 끝냈습니다.</p><p>대신 새 문서를 바로 추천하지 못하고 사용 지표가 없어 추천 품질을 잴 수 없는 점은 감수했습니다.<br>사용자가 수천 명 규모가 되면 대역폭 한도도 다시 봐야 합니다.</p></dd></div>
+<div><dt>행동</dt><dd><p><strong>전체 500MB, 파일 하나 1MB라는 크기 기준을 먼저 정했습니다.</strong><br>그 기준에 맞춰 추천 결과를 문서 제목의 해시로 1,024개 파일에 나눠, 브라우저가 받을 파일을 바로 알게 했습니다.<br>9~30일이 걸리던 이웃 계산은 GPU 전수 탐색으로 바꿔 6분에 끝냈습니다.</p><p>대신 새 문서를 바로 추천하지 못하고 사용 지표가 없어 추천 품질을 잴 수 없는 점은 감수했습니다.<br>사용자가 수천 명 규모가 되면 대역폭 한도도 다시 봐야 합니다.</p></dd></div>
 <div class="judgment-result"><dt>결과</dt><dd><p>전체 <strong>154.3MB</strong>, 파일 하나 최대 <strong>0.176MB</strong>로 배포했고, 2주 만에 크롬 웹스토어 첫 제출을 통과했습니다.</p></dd></div>
 </dl>
 </article>
@@ -198,17 +198,13 @@
 <figcaption>같은 가공 구간을 비교하도록 시작점을 정렬한 결과</figcaption>
 </figure>
 <article aria-labelledby="cnc-choice-title" class="focus-case">
-<div class="case-heading"><span>핵심 판단</span><h3 id="cnc-choice-title">가공 사이클 시작점 정렬</h3></div>
+<div class="case-heading"><span>핵심 판단</span><h3 id="cnc-choice-title">GAN 기반 정상 범위 생성</h3></div>
 <dl class="judgment">
-<div><dt>상황</dt><dd><p>CNC 가공 사이클별 부하 패턴으로 가공 시점별 정상 범위를 만들어 이상을 판단하는 프로젝트였습니다.</p></dd></div>
-<div><dt>문제</dt><dd><p>사이클마다 시작점이 달라, 같은 순서의 값이 서로 다른 가공 구간을 가리켰습니다.</p></dd></div>
-<div><dt>행동</dt><dd><p>부하값이 오르는 시점을 기준으로 시작점을 맞추자고 제안했습니다.<br>실제 전처리에서는 부하값과 직전 값의 변화로 앞부분을 잘라 시작 시각을 0으로 두었습니다.<br>이어서 선형보간 뒤 가장 짧은 사이클 길이에 맞춰 길이를 통일했습니다.<br>이 과정에서 버려지는 기준점 앞 구간과 긴 사이클의 뒷부분은 감수했습니다.</p></dd></div>
-<div class="judgment-result"><dt>결과</dt><dd><p>모든 사이클을 <strong>950포인트</strong>로 맞춰, 실제와 GAN이 생성한 정상 데이터를 합친 가공 시점별 정상 범위를 만들었습니다.</p></dd></div>
+<div><dt>상황</dt><dd><p>기업이 준 CNC 설비 데이터는 정상 가공 기록뿐이라, 이상 사례도 정상과 이상을 구분한 레이블도 없었습니다.</p></dd></div>
+<div><dt>문제</dt><dd><p>그래서 지도학습은 처음부터 쓸 수 없었고, 정상 데이터만으로 판정 기준을 세워야 했습니다.<br>그런데 가공 도중에 이상을 잡으려면 다 쌓이기 전에 판단해야 해서, 정상 데이터도 처음 29개 사이클뿐이었습니다.</p></dd></div>
+<div><dt>행동</dt><dd><p>설비 이상은 놓치는 비용이 잘못 울리는 비용보다 크다고 보고, 재현율을 우선 지표로 정했습니다.<br>LSTM으로 판정하는 방식도 재현율은 90% 넘게 올렸지만, 정밀도와의 균형은 GAN 쪽이 나았습니다.<br><strong>그래서 GAN으로 정상 사이클 5,000개를 만들어 실제 29개와 합친 범위로 판정하는 쪽을 골랐습니다.</strong><br>생성한 사이클이 실제와 비슷한지는 그래프로만 비교해, 정량 검증이 부족한 점은 감수했습니다.</p></dd></div>
+<div class="judgment-result"><dt>결과</dt><dd><p>범위를 벗어난 지점이 3개 이상 쌓이면 이상으로 판정했습니다.<br>테스트 사이클의 5%에 이상을 넣은 시험에서 재현율 <strong>100%</strong>, F1 점수 <strong>76.92%</strong>를 얻었습니다.</p></dd></div>
 </dl>
-<div class="case-proof cnc-test-proof">
-<h4 id="cnc-test-title">합성 이상 시험 / 팀 최종 논문</h4>
-<dl class="test-results"><div><dt>재현율</dt><dd>100%</dd></div><div><dt>정밀도</dt><dd>62.50%</dd></div><div><dt>F1 점수</dt><dd>76.92%</dd></div></dl>
-<p class="selection-test-note">테스트 사이클의 5%를 골라 각 사이클의 한 시점에 이상을 넣은 시험 결과입니다.</p></div>
 </article>
 </section>
 
